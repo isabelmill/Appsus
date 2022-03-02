@@ -23,8 +23,8 @@ export default {
              </ul>
             </div>
             <div class="notes-main-layout">
-            <note-add @addNote="addNote"></note-add>
-            <note-list :notes="notesForDisplay" ></note-list>
+            <note-add @added="renderNotes"></note-add>
+            <note-list :notes="notesForDisplay"  @remove="removeNote"></note-list>
             </div>
             </main>
 
@@ -53,20 +53,15 @@ export default {
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },
-        addNote(note) {
-            noteService.createNote(note)
-            // .then(() => this.loadNotes())
-        },
-        loadNotes() {
-            noteService.query()
-                .then(notes => {
-                    this.notes = notes
-                });
+        removeNote(noteId) {
+            console.log('noteId:', noteId);
+            noteService.remove(noteId)
+                .then(() => this.renderNotes())
         },
     },
     computed: {
         notesForDisplay() {
-            if (!this.filterBy) return this.notes;
+            if (!this.filterBy || this.filterBy.type === '') return this.notes;
 
             let notes
             const regex = new RegExp(this.filterBy.txt, 'i');

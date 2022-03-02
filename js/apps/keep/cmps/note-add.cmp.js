@@ -1,8 +1,11 @@
+import {
+    noteService
+} from '../services/note.service.js';
+
 export default {
-    // props: [""],
     template: `
     <section class="note-add">
-        <form class="add-form">
+        <form  class="add-form">
             <div class="input-container">
                <input type="text" class="note-add-input" placeholder="Take a note..." v-model="input">
                <div class="edit-input-btns">
@@ -26,37 +29,46 @@ export default {
     </section>
     `,
     components: {},
-    created() {},
+    created() {
+
+    },
     data() {
         return {
+            id: '',
             input: '',
-            noteType: 'note-txt',
+            type: 'note-txt',
+            style: 'white',
         }
     },
     methods: {
         add() {
-            console.log(this.noteType);
-            this.$emit('addNote', {
+            const note = {
+                id: this.id,
                 input: this.input,
-                noteType: this.noteType
-            })
+                type: this.type,
+                style: this.style
+            }
+            noteService.createNote(note)
+                .then(() => {
+                    this.$emit("added")
+                });
             this.input = ''
         },
         changeNoteType(type) {
             switch (type) {
                 case 'note-txt':
-                    this.noteType = 'note-txt'
+                    this.type = 'note-txt'
                     break;
                 case 'note-img':
-                    this.noteType = 'note-img'
+                    this.type = 'note-img'
                     break;
                 case 'note-todos':
-                    this.noteType = 'note-todos'
+                    this.type = 'note-todos'
                     break;
             }
         },
         close() {
-            this.noteType = 'note-txt'
+            this.type = 'note-txt'
         }
     },
     computed: {},

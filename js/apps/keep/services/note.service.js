@@ -8,6 +8,7 @@ import {
 export const noteService = {
     query,
     createNote,
+    remove,
 };
 
 const NOTES_KEY = "notes";
@@ -17,8 +18,54 @@ function query() {
     return storageService.query(NOTES_KEY);
 }
 
+function remove(noteId) {
+    return storageService.remove(NOTES_KEY, noteId);
+}
+
 function createNote(note) {
-    console.log('note:', note);
+    let info = {
+        txt: '',
+        url: '',
+        lable: '',
+    };
+
+    if (note.type === 'note-txt') info = {
+        txt: note.input
+    }
+    else if (note.type === 'note-img')
+        info = {
+            // title: 
+            url: note.input
+        }
+    else if (note.type === 'note-todos') {
+        info = {
+            label: note.input,
+            todos: [{
+                    txt: 'Do this 1',
+                    isDone: false,
+                    isEdit: false
+                },
+                {
+                    txt: 'Do this 2',
+                    isDone: false,
+                    isEdit: false
+                },
+                {
+                    txt: 'Do this 3',
+                    isDone: false,
+                    isEdit: false
+                },
+            ]
+        }
+    }
+    const newNote = {
+        id: utilService.makeId,
+        type: note.type,
+        info: info,
+        isPinned: false,
+        style: 'white',
+    }
+    return storageService.post(NOTES_KEY, newNote)
 }
 
 function _createNotes() {
@@ -39,7 +86,7 @@ function _createNotes() {
                 id: "n102",
                 type: "note-img",
                 info: {
-                    url: "https://www.meme-arsenal.com/memes/4dc5c2c0a73fb9ec553c3f93703a02ad.jpg",
+                    url: "https://picsum.photos/id/237/200/300",
                     title: "Bobi and Me"
                 },
                 style: {

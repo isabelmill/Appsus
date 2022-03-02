@@ -1,4 +1,5 @@
 import noteTodoPreview from "./note-todo-preview.cmp.js"
+import notePreviewToolbar from "./note-preview-toolbar.cmp.js";
 
 export default {
     props: ["note"],
@@ -9,20 +10,23 @@ export default {
          <div class="note-text" v-if="note.type ===  'note-txt'" >
              <h1>{{note.info.title}}</h1>
              <h1>{{note.info.txt}}</h1>
+             <note-preview-toolbar :note="note" @remove="removeNote"></note-preview-toolbar>
          </div>
 
          <div class="note-img" v-if="note.type ===  'note-img'">
              <h1>{{note.info.title}}</h1>
              <h1>{{note.info.txt}}</h1>
-             <img src="note.info.url">
+             <img :src="note.info.url">
+             <note-preview-toolbar :note="note" @remove="removeNote"></note-preview-toolbar>
          </div>
 
          <div class="note-img" v-if="note.type ===  'note-todos'">
              <h1>{{note.info.title}}</h1>
              <h1>{{note.info.label}}</h1>
              <ul class="todos-container" v-for="todo in note.info.todos"> 
-             <note-todo-preview :todo="todo"></note-todo-preview>
-              </ul>
+                 <note-todo-preview :todo="todo"></note-todo-preview>
+                </ul>
+                <note-preview-toolbar :note="note" @remove="removeNote" ></note-preview-toolbar>
          </div>
 
 
@@ -33,12 +37,18 @@ export default {
     `,
     components: {
         'note-todo-preview': noteTodoPreview,
+        'note-preview-toolbar': notePreviewToolbar,
     },
     created() {},
     data() {
         return {}
     },
-    methods: {},
+    methods: {
+        removeNote(id) {
+            console.log('noteId:', id);
+            this.$emit('removeNote', id);
+        }
+    },
     computed: {},
     unmounted() {},
 }

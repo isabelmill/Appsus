@@ -6,7 +6,7 @@ export default {
         <section class="note-list">
         <ul>
             <li v-for="note in notes" :key="note.id">
-                <note-preview :note="note" >
+                <note-preview @removeNote="remove" :note="note" >
             </li>
         </ul>
         </section>
@@ -18,7 +18,12 @@ export default {
     data() {
         return {}
     },
-    methods: {},
+    methods: {
+        remove(id) {
+            console.log('id:', id);
+            this.$emit('remove', id);
+        }
+    },
     computed: {},
     unmounted() {},
 }
