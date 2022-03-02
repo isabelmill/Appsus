@@ -1,0 +1,32 @@
+.mail-preview {
+  /* background-color: rgb(33, 124, 94); */
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  color: var(--black-txt);
+  background-color: var(--clr1);
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.mail-preview div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mail-preview p {
+  margin-right: 30px;
+  width: max-content;
+}
+
+.mail-preview-btns > * {
+  margin-right: 15px;
+}
+
+.mail-preview-btns img {
+  display: flex;
+  height: 24px;
+  cursor: pointer;
+}

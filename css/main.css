@@ -10,8 +10,8 @@
 @import './apps/keep/note-preview.css';
 
 /* EMAIL */
-
-@import './apps/email/email-preview.css';
+@import './apps/mail/mail-header.css';
+@import './apps/mail/mail-preview.css';
 
 /* ////////////////////////////////////////// */
 
