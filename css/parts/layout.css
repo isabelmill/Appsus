@@ -55,7 +55,23 @@
 
 /* //// KEEP LAYOUT ///// */
 
+.keep-main-layout {
+    display: flex;
+    /* justify-content: left; */
+    background-color: pink;
+}
 
+.keep-footer-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notes-main-layout {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
 
 
 
