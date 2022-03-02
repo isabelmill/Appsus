@@ -1,0 +1,23 @@
+.mails-folders {
+  width: 256px;
+  margin-left: 30px;
+  color: var(--black-txt);
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+
+.mails-folders ul {
+  padding-left: 0;
+}
+
+.mails-folders li {
+  height: 35px;
+  cursor: pointer;
+  border-radius: 0 50px 50px 0;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.mails-folders li:hover {
+  background-color: var(--gray-light);
+}

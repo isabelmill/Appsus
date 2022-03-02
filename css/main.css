@@ -12,6 +12,7 @@
 /* EMAIL */
 @import './apps/mail/mail-header.css';
 @import './apps/mail/mail-preview.css';
+@import './apps/mail/mails-folders.css';
 
 /* ////////////////////////////////////////// */
 

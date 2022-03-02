@@ -1,14 +1,26 @@
 .mail-preview {
   /* background-color: rgb(33, 124, 94); */
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
-  height: 40px;
+  height: 43px;
   font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   color: var(--black-txt);
-  background-color: var(--clr1);
-  border-bottom: 1px solid var(--gray-light);
+  background-color: var(--gray-light);
+  border: 1px solid var(--grey);
+  transition: all 250ms ease;
+  margin-left: 16px;
 }
+
+.mail-preview:hover {
+  box-shadow: inset 2px -2px 0px #dadce0, inset -2px -2px 0 0px #dadce0,
+    0 3px 5px 0 rgb(60 64 67 / 30%), 0 3px 5px 3px rgb(60 64 67 / 15%);
+}
+
+/* .mail-preview ul {
+  padding-left: 0;
+} */
 
 .mail-preview div {
   display: flex;
@@ -23,6 +35,10 @@
 
 .mail-preview-btns > * {
   margin-right: 15px;
+}
+
+.mail-preview-btns {
+  margin-left: 30px;
 }
 
 .mail-preview-btns img {
