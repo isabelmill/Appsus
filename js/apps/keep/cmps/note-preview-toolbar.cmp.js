@@ -25,7 +25,7 @@ export default {
                     <img title="send email" @click="composeMail" src="./img/keep-img/icons/mail.svg" alt="">
                 </div>
                 <div class="pin-note">
-                    <img title="pin note" src="./img/keep-img/icons/pin.svg" alt="">
+                    <img @click="togglePin" title="pin note" src="./img/keep-img/icons/pin.svg" alt="">
                 </div>
             </div>
         </section>
@@ -51,6 +51,9 @@ export default {
         },
         composeMail() {
             alert('not working yet');
+        },
+        togglePin() {
+            eventBus.emit('togglePin', this.note)
         },
     },
     computed: {},

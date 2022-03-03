@@ -18,7 +18,7 @@ export default {
             <div class="keep-img-nav-div">
             <img class="keep-img-nav" src="./img/keep-img/icons/nav.PNG" alt="">
             </div>
-            <img class="keep-img-header" src="./img/keep.png" alt="">
+            <img class="keep-img-header" src="./img/keep-img/icons/keep-logo2.png" alt="">
             
             <div class="keep-logo">Keep</div>
             </div>
@@ -63,6 +63,7 @@ export default {
         eventBus.on('remove', this.removeNote)
         eventBus.on('setColor', this.changeColor)
         eventBus.on('duplicate', this.duplicateNote)
+        eventBus.on('togglePin', this.togglePin)
     },
     data() {
         return {
@@ -90,7 +91,13 @@ export default {
         duplicateNote(note) {
             noteService.duplicate(note)
                 .then(() => this.renderNotes())
-        }
+        },
+        togglePin(note) {
+            console.log('note:', note);
+            note.isPinned = !note.isPinned;
+            noteService.updateNote(note)
+                .then(() => this.renderNotes())
+        },
     },
     computed: {
         notesForDisplay() {
