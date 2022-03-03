@@ -1,8 +1,10 @@
 import { mailService } from '../services/mail-service.js';
+import { eventBus } from '../../../services/eventBus-service.js';
 import mailList from '../cmps/mail-list.cmp.js';
 import mailFilter from '../cmps/mail-filter.cmp.js';
 import mailFolders from '../cmps/mail-folders.cmp.js';
 import mailAdd from './mail-add.cmp.js'
+import mailDetails from './mail-details.cmp.js';
 
 export default {
     // props: [""],
@@ -26,17 +28,23 @@ export default {
             <div class="btn-compose"> 
                 <div @click="showMailAddModal" class="add"><img src="img/mail-img/icons/add.png"></div> 
                 <p @click="showMailAddModal">Compose</p></div>
-            <div class="trash"><img @click="removeMails" src="img/mail-img/icons/delete.svg"></div>
+
+            <div v-if="markedMails" class="trash"><img @click="removeMails" src="img/mail-img/icons/delete.svg"></div>
+            <div v-if="selectedMail" class="trash"><img @click="beckToMailsList" src="img/mail-img/icons/arrow_back.svg"></div>
+           
         </section>
         <section class="mail-main-layout">
             <mail-folders @filtered="setFilter"/>
-            <mail-list :mails="mailsToShow2"/>
+            <mail-list v-if="!selectedMail" :mails="mailsToShow2"/>
+            <mail-details v-if="selectedMail" :mail="selectedMail"/>
             <mail-add v-if="isAddMail" @add="saveSentMail"/>
         </section>
     `,
     components: {
         mailList,
-        mailService,
+        // mailService,
+        // eventBus,
+        mailDetails,
         mailFilter,
         mailFolders,
         mailAdd,
@@ -49,16 +57,23 @@ export default {
                 txt: '',
                 status: ''
             },
+            selectedMail: null,
+            markedMails: null,
         }
     },
     created() {
-        mailService.query()
-            .then(mails => {
-                this.mails = mails
-                console.log('mails', mails)
-            })
+        this.getMails()
+        eventBus.on('selectedMail', this.selectMail)
+        eventBus.on('markedMail', this.marked)
     },
     methods: {
+        getMails() {
+            mailService.query()
+                .then(mails => {
+                    this.mails = mails
+                    console.log('mails', mails)
+                })
+        },
         showMailAddModal() {
             this.isAddMail = !this.isAddMail
             // console.log('isAddMail', this.isAddMail)
@@ -74,6 +89,7 @@ export default {
                     mailService.save(mail)
                 }
             })
+            this.isMarked = false
         },
         saveSentMail(newMail) {
             // console.log(newMail)
@@ -84,6 +100,20 @@ export default {
                         .then(mails => {
                             this.mails = mails
                         })
+                })
+        },
+        selectMail(mail) {
+            this.selectedMail = mail
+            console.log('EMAIL SELECTED!!!!', this.selectedMail)
+        },
+        beckToMailsList() {
+            this.selectedMail = null
+        },
+        marked() {
+            mailService.query()
+                .then(mails => {
+                    console.log('markedMails', this.markedMails)
+                    return this.markedMails = mails.filter(mail => mail.isSelected === true)
                 })
         }
     },
@@ -102,6 +132,5 @@ export default {
                     mail.status === 'important');
             return this.mails.filter(mail => mail.status === this.filterBy.status)
         },
-
     },
 }

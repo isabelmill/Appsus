@@ -1,4 +1,5 @@
 import { mailService } from "../services/mail-service.js"
+import { eventBus } from "../../../services/eventBus-service.js"
 
 export default {
     props: ["mail"],
@@ -22,7 +23,9 @@ export default {
     `,
     components: {
     },
-    created() { },
+    created() { 
+        
+    },
     data() {
         return {
         }
@@ -31,12 +34,14 @@ export default {
         mailRead() {
             this.mail.isRead = !this.mail.isRead
             mailService.save(this.mail)
-            console.log('read!:')
+            console.log('read!:' , this.mail)
+            eventBus.emit('selectedMail', this.mail)
         },
         mailSelected() {
             this.mail.isSelected = !this.mail.isSelected
             mailService.save(this.mail)
             console.log('isSelected!:')
+            eventBus.emit('markedMail', 'marked')
         },
         mailStarred() {
             this.mail.isStarred = !this.mail.isStarred

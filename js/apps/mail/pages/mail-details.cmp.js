@@ -1,43 +1,44 @@
-import { mailService } from '../services/mail-service';
-
+// import { mailService } from '../services/mail-service.js';
 export default {
+        props: ["mail"],
     template: `
-        <section v-if="mail" class="mail-details">
+        <section class="mail-details">
             <h4>mail details</h4>
             <pre>{{mail}}</pre>
-            <button @click="loadMail">Reload</button>
-            <router-link :to="'/mail/'+mail.prevMailId">Prev Car</router-link> | 
-            <router-link :to="'/mail/'+mail.nextMailId">Next Car</router-link> | 
-            <router-link to="/mail">Back</router-link>
+            <!-- <button @click="loadMail">Reload</button> -->
+            <!-- <router-link :to="'/mail/'+mail.prevMailId">Prev Car</router-link> | 
+            <router-link :to="'/mail/'+mail.nextMailId">Next Car</router-link> |  -->
+            <!-- <router-link to="/mail">Back</router-link> -->
         </section>
-        <section v-else class="loading">
-        </section>
+        <!-- <section v-else class="loading">
+        </section> -->
     `,
+    components: {
+    },
     data() {
         return {
-            mail: null
         };
     },
     created() {
-        console.log('Mail Details CREATED!!!');
     },
     computed: {
-        mailId() {
-            return this.$route.params.MailId
-        }
+
+        // mailId() {
+        //     return this.$route.params.MailId
+        // }
     },
     methods: {
-        loadMail() {
-            mailService.get(this.mailId)
-            .then(mail => this.mail = mail);
-        }
+        // loadMail() {
+        //     mailService.get(this.mailId)
+        //     .then(mail => this.mail = mail);
+        // }
     },
-    watch : {
-        mailId : {
-            handler(){
-                this.loadMail()
-            },
-            immediate : true,
-        }
-    }
+    // watch : {
+    //     mailId : {
+    //         handler(){
+    //             this.loadMail()
+    //         },
+    //         immediate : true,
+    //     }
+    // }
 };
