@@ -58,6 +58,7 @@
 .keep-main-layout {
   display: flex;
   padding: 25px 20px 25px 20px;
+  width: 100%;
 }
 
 .keep-header-layout {

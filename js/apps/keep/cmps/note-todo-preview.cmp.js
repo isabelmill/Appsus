@@ -2,8 +2,8 @@ export default {
     props: ["todo"],
     template: `
         <li>
-            <input type="checkbox" :id="todo.txt" v-model="todo.doneAt">
-            <p>{{todo.txt}}</p></label>
+            <input class="check-box-input" type="checkbox"  v-model="todo.doneAt">
+            <p>{{todo.txt}}</p>
         </li>
     `,
     components: {},

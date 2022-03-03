@@ -1,4 +1,7 @@
 import {
+    eventBus
+} from '../../../services/eventBus-service.js';
+import {
     noteService
 } from '../services/note.service.js';
 import noteList from '../cmps/note-list.cmp.js';
@@ -44,7 +47,7 @@ export default {
             </div>
             <div class="notes-main-layout">
             <note-add @added="renderNotes"></note-add>
-            <note-list :notes="notesForDisplay"  @remove="removeNote"></note-list>
+            <note-list :notes="notesForDisplay" ></note-list>
             </div>
             </main>
 
@@ -57,6 +60,9 @@ export default {
     },
     created() {
         this.renderNotes()
+        eventBus.on('remove', this.removeNote)
+        eventBus.on('setColor', this.changeColor)
+        eventBus.on('duplicate', this.duplicateNote)
     },
     data() {
         return {
@@ -77,6 +83,14 @@ export default {
             noteService.remove(noteId)
                 .then(() => this.renderNotes())
         },
+        changeColor(note) {
+            noteService.updateNote(note)
+                .then(() => this.renderNotes())
+        },
+        duplicateNote(note) {
+            noteService.duplicate(note)
+                .then(() => this.renderNotes())
+        }
     },
     computed: {
         notesForDisplay() {

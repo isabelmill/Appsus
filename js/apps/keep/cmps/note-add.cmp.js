@@ -6,13 +6,16 @@ export default {
     template: `
     <section class="note-add">
         <form  class="add-form">
-            <div  :style="show ? { 'height': '80px' } : null" class="input-container">
-               <input @click="show = !show" type="text" class="note-add-input" :placeholder="placeHolder" v-model="input">
+            <div  :style="show ? { 'height': '80px' } : null" class="input-container" >
+               <input  @click="show = !show" type="text" class="note-add-input" :placeholder="placeHolder" v-model="input" @blur="add(),show = !show ">
 
             <div class="all-add-btns">
                <div class="edit-input-btns">
-                    <div class="color-palette">
+                    <!-- <div class="color-palette">
                         <img src="./img/keep-img/icons/palette.svg" alt="">
+                    </div> -->
+                    <div @click="changeNoteType('note-txt')" class="text-note">
+                        <img src="./img/keep-img/icons/black-pencil.svg" alt="">
                     </div>
                     <div @click="changeNoteType('note-img')" class="insert-img">
                         <img src="./img/keep-img/icons/insert-img.svg" alt="">
@@ -23,7 +26,7 @@ export default {
                 </div>
 
                 <div v-if="show" class="note-add-delete-btns">
-                <button @click="add()">Add</button>
+                <!-- <button @click="add()">Add</button> -->
                 <button @click="close()">Close</button>
                 </div>
 
@@ -43,7 +46,7 @@ export default {
             input: '',
             type: 'note-txt',
             style: 'white',
-            placeHolder: 'Take a note...'
+            placeHolder: 'Take a note'
         }
     },
     methods: {
@@ -54,6 +57,7 @@ export default {
                 type: this.type,
                 style: this.style
             }
+            if (!this.input) return
             noteService.createNote(note)
                 .then(() => {
                     this.$emit("added")
@@ -64,6 +68,7 @@ export default {
             switch (type) {
                 case 'note-txt':
                     this.type = 'note-txt'
+                    this.placeHolder = 'Take a note'
                     break;
                 case 'note-img':
                     this.type = 'note-img'
