@@ -47,10 +47,9 @@ export default {
         },
         mailImportant() {
             this.mail.isImportant = !this.mail.isImportant
-            if(this.mail.isStarred) this.mail.status = 'important' 
+            if(this.mail.isImportant) this.mail.status = 'important' 
             else this.mail.status = 'inbox'
             mailService.save(this.mail)
-            this.mail.status = 'important'
             console.log('important! XXX:')
         },
 

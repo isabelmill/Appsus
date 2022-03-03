@@ -30,6 +30,7 @@ function save(mail) {
         return storageService.put(MAILS_KEY, mail);
     }
     else {
+        mail.id = utilService.makeId()
         console.log(mail)
         return storageService.post(MAILS_KEY, mail);
     }
@@ -250,7 +251,7 @@ function _createMails() {
 // user
 const loginUser = {
     email: 'user@appsus.com',
-    fullName: 'Mahatma Appsus'
+    fullName: 'Appsus Mabsus'
 }
 
 // const criteria = {

@@ -4,8 +4,6 @@ import {
 import appHeader from './cmps/app-header.cmp.js';
 import appFooter from './cmps/app-footer.cmp.js';
 
-
-
 const options = {
     template: `
     

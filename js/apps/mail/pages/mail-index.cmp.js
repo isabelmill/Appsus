@@ -31,7 +31,7 @@ export default {
         <section class="mail-main-layout">
             <mail-folders @filtered="setFilter"/>
             <mail-list :mails="mailsToShow2"/>
-            <mail-add v-if="isAddMail"/>
+            <mail-add v-if="isAddMail" @add="saveSentMail"/>
         </section>
     `,
     components: {
@@ -61,7 +61,7 @@ export default {
     methods: {
         showMailAddModal() {
             this.isAddMail = !this.isAddMail
-            console.log('isAddMail', this.isAddMail)
+            // console.log('isAddMail', this.isAddMail)
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
@@ -69,19 +69,37 @@ export default {
 
         removeMails() {
             this.mails.forEach((mail) => {
-                if (mail.isSelected) mail.status = 'trash'
+                if (mail.isSelected) {
+                    mail.status = 'trash'
+                    mailService.save(mail)
+                }
             })
         },
+        saveSentMail(newMail) {
+            // console.log(newMail)
+            mailService.save(newMail)
+                .then(() => {
+                    console.log('New Msg Saved!')
+                    mailService.query()
+                        .then(mails => {
+                            this.mails = mails
+                        })
+                })
+        }
     },
     computed: {
-        mailsToShow() {
-            if (!this.filterBy.txt) return this.mails;
-            const regexTxt = new RegExp(this.filterBy.txt, 'i')
-            return this.mails.filter(mail => regexTxt.test(mail.user))
-        },
+        // mailsToShow() {
+        //     if (!this.filterBy.txt) return this.mails;
+        //     const regexTxt = new RegExp(this.filterBy.txt, 'i')
+        //     return this.mails.filter(mail => regexTxt.test(mail.user))
+        // },
         mailsToShow2() {
-            console.log()
-            if (!this.filterBy.status) return this.mails.filter(mail => mail.status !== 'trash');
+            // if(this.filterBy.status === '') return this.mails.filter(mail => mail.status === '');
+            if (!this.filterBy.status)
+                return this.mails.filter(mail =>
+                    mail.status === 'inbox' ||
+                    mail.status === 'starred' ||
+                    mail.status === 'important');
             return this.mails.filter(mail => mail.status === this.filterBy.status)
         },
 
