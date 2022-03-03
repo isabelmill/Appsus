@@ -2,6 +2,7 @@ import { mailService } from '../services/mail-service.js';
 import mailList from '../cmps/mail-list.cmp.js';
 import mailFilter from '../cmps/mail-filter.cmp.js';
 import mailFolders from '../cmps/mail-folders.cmp.js';
+import mailAdd from './mail-add.cmp.js'
 
 export default {
     // props: [""],
@@ -9,7 +10,7 @@ export default {
         <section class="mail-header">
             <nav>
                 <ul class="logo-bar">
-                    <li> <img src="img/mail-img/icons/menu.svg"></li>
+                    <li><img src="img/mail-img/icons/menu.svg"></li>
                     <li><img class="logo-img" src="img/mail-img/logo/gmail.png"></li>
                     <li class="logo-txt">Gmail</li>
                 </ul> 
@@ -21,9 +22,16 @@ export default {
                 </ul>
             </nav>
         </section>
+        <section class="compose-trash-bar">
+            <div class="btn-compose"> 
+                <div @click="showMailAddModal" class="add"><img src="img/mail-img/icons/add.png"></div> 
+                <p @click="showMailAddModal">Compose</p></div>
+            <div class="trash"><img @click="removeMails" src="img/mail-img/icons/delete.svg"></div>
+        </section>
         <section class="mail-main-layout">
             <mail-folders @filtered="setFilter"/>
             <mail-list :mails="mailsToShow2"/>
+            <mail-add v-if="isAddMail"/>
         </section>
     `,
     components: {
@@ -31,13 +39,15 @@ export default {
         mailService,
         mailFilter,
         mailFolders,
+        mailAdd,
     },
     data() {
         return {
+            isAddMail: false,
             mails: null,
             filterBy: {
                 txt: '',
-                status: 'inbox'
+                status: ''
             },
         }
     },
@@ -49,24 +59,31 @@ export default {
             })
     },
     methods: {
+        showMailAddModal() {
+            this.isAddMail = !this.isAddMail
+            console.log('isAddMail', this.isAddMail)
+        },
         setFilter(filterBy) {
-            // console.log(filterBy)
             this.filterBy = filterBy
         },
-        // setFilterFolder(){
-        //     this.filter.s
-        // }
+
+        removeMails() {
+            this.mails.forEach((mail) => {
+                if (mail.isSelected) mail.status = 'trash'
+            })
+        },
     },
     computed: {
         mailsToShow() {
             if (!this.filterBy.txt) return this.mails;
             const regexTxt = new RegExp(this.filterBy.txt, 'i')
             return this.mails.filter(mail => regexTxt.test(mail.user))
-
         },
         mailsToShow2() {
-            if(this.filterBy.status === 'inbox') return this.mails;
+            console.log()
+            if (!this.filterBy.status) return this.mails.filter(mail => mail.status !== 'trash');
             return this.mails.filter(mail => mail.status === this.filterBy.status)
-        }
+        },
+
     },
 }

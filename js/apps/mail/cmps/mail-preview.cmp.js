@@ -69,5 +69,4 @@ export default {
             else return `img/mail-img/icons/important.svg`
         },
     },
-    unmounted() { },
 }
