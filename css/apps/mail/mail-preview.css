@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   height: 43px;
+  width: 100%;
   font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   color: var(--black-txt);
@@ -46,3 +47,7 @@
   height: 24px;
   cursor: pointer;
 }
+
+/* .mail-preview-btns:last-child {
+  transform: rotate(90deg);
+} */

@@ -1,13 +1,13 @@
 export default {
     template: `
     <section class="mails-filter">
-        <input @input="setFilter" type="text" v-model="filterBy.user" class="mail-filter" placeholder="Search mail">
+        <input @input="setFilter" type="text" v-model="filterBy.txt" class="mail-filter" placeholder="Search mail">
     </section>
     `,
     data() {
         return {
             filterBy: {
-                user: '',
+                txt: '',
             }
         };
     },

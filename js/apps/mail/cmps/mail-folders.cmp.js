@@ -1,31 +1,26 @@
 export default {
     template: `
     <section class="mails-folders">
-        <ul @change="setFilter">
-            <li value="isStared">Inbox</li>
-            <li value="isImportant">Starred</li>
-            <li value="isStared">Important</li>
-            <li value="sent">Sent</li>
-            <li value="trash">Trash</li>
-            <!-- <li @click="setFilter()" value="draft">Draft</li> -->
+        <ul>
+            <li @click="setFilter('inbox')">Inbox</li>
+            <li @click="setFilter('starred')">Starred</li>
+            <li @click="setFilter('important')">Important</li>
+            <li @click="setFilter('sent')">Sent</li>
+            <li @click="setFilter('trash')">Trash</li>
         </ul>
     </section>
     `,
     data() {
         return {
             filterBy: {
-                isStared: '',
-                isImportant: '',
-                sent: '',
-                // draft: '',
-                trash: '',
+                status: 'inbox',
             }
         };
     },
     methods: {
-        setFilter() {
-            console.log('folder!')
-            console.log(this.filterBy)
+        setFilter(folder) {
+            console.log('folder!', folder)
+            this.filterBy.status = folder
             this.$emit('filtered', { ...this.filterBy })
         }
     },
