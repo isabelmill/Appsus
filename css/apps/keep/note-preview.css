@@ -31,11 +31,26 @@
     display: flex;
 }
 
+.note-details h1 {
+    font-size: 1.3rem;
+}
+
+.note-details h2 {
+    font-size: 1rem;
+}
+
 .note-list {
     display: block;
     max-width: 1200px;
     padding: 50px;
     columns: 4;
+    height: 100%;
+    /* margin-bottom: 50px; */
+}
+
+hr {
+    width: 100%;
+    /* height: 30px; */
 }
 
 .note-list li {
@@ -57,18 +72,6 @@ ul.todos-container {
 
 }
 
-/* .note-list ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-} */
-
-/* .note-list ul li { */
-/* break-inside: avoid; */
-/* width: min-content;
-    height: min-content; */
-/* } */
 
 .note-text {
     padding: 10px;
@@ -112,14 +115,15 @@ div.tool-bar-btns {
 .notes-filter-input {
     display: flex;
     height: 30px;
-    width: 470px;
+    width: 600px;
+    margin-right: 50px;
     padding: 15px;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     background-color: rgb(241, 243, 244);
     border: 2px solid rgb(239, 238, 236);
     border-radius: 10px;
-    gap: 30px;
+    gap: 10px;
     box-shadow: 1px 6px 15px -2px rgba(0, 0, 0, 0.18)
 }
 
@@ -147,7 +151,7 @@ div.tool-bar-btns {
     border: none;
     background-color: rgb(241, 243, 244);
     width: 400px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: grey;
 }
 
@@ -256,10 +260,10 @@ select:focus {
 .input-container {
     display: flex;
     height: 40px;
-    width: 600px;
+    width: 800px;
     padding: 15px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: rgb(255, 255, 255);
     border: 2px solid rgb(239, 238, 236);
     border-radius: 10px;
@@ -284,7 +288,6 @@ select:focus {
 
 .edit-input-btns {
     gap: 10px;
-    position: sticky;
 }
 
 .edit-input-btns img {
@@ -295,8 +298,11 @@ select:focus {
 
 .note-add-delete-btns {
     display: flex;
+    width: 120px;
     flex-direction: row;
-    gap: 15px;
+    justify-content: end;
+    gap: 35px;
+    margin-bottom: 5px;
 }
 
 .note-add-delete-btns button {
@@ -304,9 +310,10 @@ select:focus {
     padding: 5px;
     gap: 10px;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-family: Roboto-regular;
     background-color: rgb(255, 255, 255);
+
 }
 
 .note-add-delete-btns button:hover {
@@ -386,6 +393,7 @@ select:focus {
     justify-content: center;
     width: 45px;
     height: 45px;
+    margin-right: 20px;
 }
 
 .color-palette {
@@ -396,7 +404,21 @@ select:focus {
     height: 45px;
 }
 
+.text-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+}
+
 .insert-img:hover {
+    background-color: rgb(211, 212, 214);
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.text-note:hover {
     background-color: rgb(211, 212, 214);
     transition: 0.4s;
     border-radius: 50px;
@@ -412,4 +434,84 @@ select:focus {
     background-color: rgb(211, 212, 214);
     transition: 0.5s;
     border-radius: 50px;
+}
+
+section.note-preview:first-child {
+    margin-bottom: 35px;
+}
+
+.drop-down-colors {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.drop-down-colors img {
+    margin: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.slide-fade-enter-active {
+    transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateX(20px);
+    opacity: 0;
+}
+
+.bounce-enter-active {
+    animation: bounce-in 0.5s;
+}
+
+.bounce-leave-active {
+    animation: bounce-in 0.5s reverse;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.check-box-input {
+    background-size: 18px 18px;
+    height: 18px;
+    opacity: 0.54;
+    outline: none;
+    top: 5px;
+    width: 18px;
+    margin-right: 8px;
+
+}
+
+.pinned-notes-logo {
+    padding-top: 60px;
+    font-family: Roboto-regular;
+    text-align: left;
+    margin-left: 100px;
+    font-size: 1.3rem;
+}
+
+.user-note-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

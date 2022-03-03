@@ -3,12 +3,17 @@ import notePreview from "./note-preview.cmp.js"
 export default {
     props: ["notes"],
     template: `
+            <div class="pinned-notes-logo">Pinned</div>
+            <section class="note-list">
+                <div v-for="note in notes" >
+                    <note-preview v-if="note.isPinned" :note="note" >
+                        </div>
+                    </section>
+                    <div class="pinned-notes-logo">Others</div>
         <section class="note-list">
-        <ul>
-            <li v-for="note in notes" :key="note.id">
-                <note-preview @removeNote="remove" :note="note" >
-            </li>
-        </ul>
+            <div v-for="note in notes" >
+                <note-preview v-if="!note.isPinned" :note="note" >
+            </div>
         </section>
     `,
     components: {
@@ -18,12 +23,7 @@ export default {
     data() {
         return {}
     },
-    methods: {
-        remove(id) {
-            console.log('id:', id);
-            this.$emit('remove', id);
-        }
-    },
+    methods: {},
     computed: {},
     unmounted() {},
 }

@@ -9,6 +9,8 @@ export const noteService = {
     query,
     createNote,
     remove,
+    updateNote,
+    duplicate,
 };
 
 const NOTES_KEY = "notes";
@@ -16,6 +18,15 @@ _createNotes()
 
 function query() {
     return storageService.query(NOTES_KEY);
+}
+
+function duplicate(note) {
+    console.log('note:', note);
+    return storageService.post(NOTES_KEY, note)
+}
+
+function updateNote(note) {
+    return storageService.put(NOTES_KEY, note)
 }
 
 function remove(noteId) {
@@ -34,7 +45,6 @@ function createNote(note) {
     }
     else if (note.type === 'note-img')
         info = {
-            // title: 
             url: note.input
         }
     else if (note.type === 'note-todos') {
@@ -60,10 +70,11 @@ function createNote(note) {
     }
     const newNote = {
         id: utilService.makeId,
+        title: note.title,
         type: note.type,
-        info: info,
         isPinned: false,
         style: 'white',
+        info: info,
     }
     return storageService.post(NOTES_KEY, newNote)
 }
@@ -73,31 +84,31 @@ function _createNotes() {
     if (!notes || !notes.length) {
         notes = [{
                 id: "n101",
+                title: "",
                 type: "note-txt",
-                isPinned: true,
+                style: 'white',
+                isPinned: false,
                 info: {
                     txt: "Fullstack Me Baby!"
                 },
-                style: {
-                    backgroundColor: "white"
-                }
             },
             {
                 id: "n102",
+                title: "Bobi and Me",
                 type: "note-img",
+                style: 'white',
+                isPinned: false,
                 info: {
                     url: "https://picsum.photos/id/237/200/300",
-                    title: "Bobi and Me"
                 },
-                style: {
-                    backgroundColor: "white"
-                }
             },
             {
                 id: "n103",
+                title: "Get my stuff together",
                 type: "note-todos",
+                style: 'white',
+                isPinned: false,
                 info: {
-                    label: "Get my stuff together",
                     todos: [{
                             txt: "Driving liscence",
                             doneAt: null
@@ -108,15 +119,14 @@ function _createNotes() {
                         }
                     ]
                 },
-                style: {
-                    backgroundColor: "white"
-                }
             },
             {
                 id: "n104",
+                title: "what to do",
                 type: "note-todos",
+                style: 'white',
+                isPinned: false,
                 info: {
-                    label: "what to do",
                     todos: [{
                             txt: "Filter",
                             doneAt: null
@@ -135,9 +145,6 @@ function _createNotes() {
                         },
                     ]
                 },
-                style: {
-                    backgroundColor: "white"
-                }
             }
         ];
         utilService.saveToStorage(NOTES_KEY, notes);

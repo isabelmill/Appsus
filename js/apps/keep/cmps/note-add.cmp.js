@@ -6,13 +6,17 @@ export default {
     template: `
     <section class="note-add">
         <form  class="add-form">
-            <div  :style="show ? { 'height': '80px' } : null" class="input-container">
-               <input @click="show = !show" type="text" class="note-add-input" :placeholder="placeHolder" v-model="input">
+            <div  :style="show ? { 'height': '80px' } : null" class="input-container" >
+                
+            <div class="user-note-inputs">
+               <input @blur="add(),show = !show" placeholder="Title" v-if="show" type="text"  v-model="title">
+               <input  @click="show = !show" type="text" class="note-add-input" :placeholder="placeHolder" v-model="input" v-if="type !== 'note-todos'" >
+               </div>
 
             <div class="all-add-btns">
                <div class="edit-input-btns">
-                    <div class="color-palette">
-                        <img src="./img/keep-img/icons/palette.svg" alt="">
+                    <div @click="changeNoteType('note-txt')" class="text-note">
+                        <img src="./img/keep-img/icons/black-pencil.svg" alt="">
                     </div>
                     <div @click="changeNoteType('note-img')" class="insert-img">
                         <img src="./img/keep-img/icons/insert-img.svg" alt="">
@@ -40,6 +44,7 @@ export default {
         return {
             show: false,
             id: '',
+            title: '',
             input: '',
             type: 'note-txt',
             style: 'white',
@@ -50,20 +55,24 @@ export default {
         add() {
             const note = {
                 id: this.id,
+                title: this.title,
                 input: this.input,
                 type: this.type,
                 style: this.style
             }
+            if (!this.input) return
             noteService.createNote(note)
                 .then(() => {
                     this.$emit("added")
                 });
             this.input = ''
+            this.title = ''
         },
         changeNoteType(type) {
             switch (type) {
                 case 'note-txt':
                     this.type = 'note-txt'
+                    this.placeHolder = 'Take a note...'
                     break;
                 case 'note-img':
                     this.type = 'note-img'

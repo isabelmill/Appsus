@@ -1,4 +1,7 @@
 import {
+    eventBus
+} from '../../../services/eventBus-service.js';
+import {
     noteService
 } from '../services/note.service.js';
 import noteList from '../cmps/note-list.cmp.js';
@@ -15,7 +18,7 @@ export default {
             <div class="keep-img-nav-div">
             <img class="keep-img-nav" src="./img/keep-img/icons/nav.PNG" alt="">
             </div>
-            <img class="keep-img-header" src="./img/keep.png" alt="">
+            <img class="keep-img-header" src="./img/keep-img/icons/keep-logo2.png" alt="">
             
             <div class="keep-logo">Keep</div>
             </div>
@@ -44,7 +47,7 @@ export default {
             </div>
             <div class="notes-main-layout">
             <note-add @added="renderNotes"></note-add>
-            <note-list :notes="notesForDisplay"  @remove="removeNote"></note-list>
+            <note-list :notes="notesForDisplay" ></note-list>
             </div>
             </main>
 
@@ -57,6 +60,10 @@ export default {
     },
     created() {
         this.renderNotes()
+        eventBus.on('remove', this.removeNote)
+        eventBus.on('setColor', this.changeColor)
+        eventBus.on('duplicate', this.duplicateNote)
+        eventBus.on('togglePin', this.togglePin)
     },
     data() {
         return {
@@ -75,6 +82,20 @@ export default {
         },
         removeNote(noteId) {
             noteService.remove(noteId)
+                .then(() => this.renderNotes())
+        },
+        changeColor(note) {
+            noteService.updateNote(note)
+                .then(() => this.renderNotes())
+        },
+        duplicateNote(note) {
+            noteService.duplicate(note)
+                .then(() => this.renderNotes())
+        },
+        togglePin(note) {
+            console.log('note:', note);
+            note.isPinned = !note.isPinned;
+            noteService.updateNote(note)
                 .then(() => this.renderNotes())
         },
     },
