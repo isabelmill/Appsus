@@ -1,0 +1,31 @@
+.compose-trash-bar {
+  height: 82px;
+  display: flex;
+  align-items: center;
+}
+
+.trash {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  margin-left: 120px;
+}
+
+.add {
+  height: 24px;
+  width: 24px;
+}
+
+.btn-compose {
+  cursor: pointer;
+  height: 50px;
+  width: 147px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  border-radius: 30px;
+  font-family: Roboto, RobotoDraft, Arial, sans-serif;
+  margin-left: 30px;
+}

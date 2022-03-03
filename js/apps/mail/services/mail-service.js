@@ -247,19 +247,11 @@ function _createMails() {
     return mails;
 }
 
-
-
-
-
 // user
 const loginUser = {
     email: 'user@appsus.com',
     fullName: 'Mahatma Appsus'
 }
-
-
-
-
 
 // const criteria = {
 //     status: 'inbox/sent/trash/draft',

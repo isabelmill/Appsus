@@ -2,7 +2,7 @@ export default {
     template: `
     <section class="mails-folders">
         <ul>
-            <li @click="setFilter('inbox')">Inbox</li>
+            <li @click="setFilter('')">Inbox</li>
             <li @click="setFilter('starred')">Starred</li>
             <li @click="setFilter('important')">Important</li>
             <li @click="setFilter('sent')">Sent</li>
@@ -13,7 +13,7 @@ export default {
     data() {
         return {
             filterBy: {
-                status: 'inbox',
+                status: '',
             }
         };
     },

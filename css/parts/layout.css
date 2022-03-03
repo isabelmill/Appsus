@@ -99,4 +99,5 @@
 
 .mail-main-layout {
   display: flex;
+  width: 100%;
 }
