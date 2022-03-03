@@ -57,14 +57,15 @@
 
 .keep-main-layout {
   display: flex;
-  /* justify-content: left; */
-  background-color: pink;
+  padding: 25px 20px 25px 20px;
 }
 
-.keep-footer-layout {
+.keep-header-layout {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  /* margin-top: 20px; */
+
 }
 
 .notes-main-layout {
@@ -73,9 +74,29 @@
   margin: auto;
 }
 
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.notes-nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+}
+
+.left-side-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 /* //// MAIL LAYOUT //// */
 
 .mail-main-layout {
   display: flex;
 }
-

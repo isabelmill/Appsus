@@ -7,3 +7,8 @@
     font-family: Roboto-Sarif;
     src: url(/css/fonts/Roboto_Serif/RobotoSerif-Regular.ttf);
 }
+
+@font-face {
+    font-family: PT-sans-regular;
+    src: url(/css/fonts/PT_Sans/PTSans-Regular.ttf);
+}

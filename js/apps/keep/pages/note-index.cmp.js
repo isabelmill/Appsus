@@ -9,9 +9,29 @@ export default {
     template: `
         <section>
             <header>
-            <div class="keep-footer-layout">
-            <note-filter @filtered="setFilter"></note-filter>
+
+            <div class="keep-header-layout">
+            <div class="notes-nav">
+            <div class="keep-img-nav-div">
+            <img class="keep-img-nav" src="./img/keep-img/icons/nav.PNG" alt="">
             </div>
+            <img class="keep-img-header" src="./img/keep.png" alt="">
+            
+            <div class="keep-logo">Keep</div>
+            </div>
+            <note-filter @filtered="setFilter"></note-filter>
+
+            <div class="left-side-menu">
+            <div class="notes-menu">
+            <img class="notes-menu-icon"src="./img/mail-img/icons/apps.svg" alt="">
+            </div>
+            <div class="notes-avatar">
+            <img class="notes-avatar-img"src="./img/keep-img/avatar/my-avatar.svg" alt="">
+            </div>
+            </div>
+
+            </div>
+
             </header>
 
             <main class="keep-main-layout">
@@ -54,7 +74,6 @@ export default {
             this.filterBy = filterBy;
         },
         removeNote(noteId) {
-            console.log('noteId:', noteId);
             noteService.remove(noteId)
                 .then(() => this.renderNotes())
         },

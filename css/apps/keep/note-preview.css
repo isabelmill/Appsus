@@ -1,18 +1,89 @@
 .note-preview {
+    display: flex;
     text-align: center;
     margin: 10px;
-    width: 300px;
-    padding-bottom: 20px;
-    flex-direction: column;
-    justify-content: center;
+    border: 2px solid rgb(221, 220, 217);
+    border-radius: 10px;
+    padding: 10px;
+    font-family: Roboto-regular;
+    break-inside: avoid;
     align-items: center;
-    border-radius: 5px;
-    -webkit-box-shadow: -1px 1px 9px 1px rgba(0, 0, 0, 0.05);
-    box-shadow: -1px 1px 9px 1px rgba(0, 0, 0, 0.05);
-    margin-bottom: 50px;
-    border: 4px dotted blue;
-    /* box-sizing: border-box; */
-    /* background-color: blanchedalmond; */
+    justify-content: center;
+}
+
+/* .note-preview-container:hover {
+    transform: scale(1.001);
+    box-shadow: 4px 4px 9px 1px;
+    transition: 0.2s;
+} */
+
+.note-preview h1 {
+    font-size: 1.1rem;
+}
+
+.add-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-details {
+    display: flex;
+}
+
+.note-list {
+    display: block;
+    max-width: 1200px;
+    padding: 50px;
+    columns: 4;
+}
+
+.note-list li {
+    margin-bottom: 10px;
+
+}
+
+ul.todos-container {
+    display: flex;
+    align-items: center;
+    /* flex-direction: column; */
+    justify-content: flex-start;
+}
+
+.todos-container li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+/* .note-list ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+} */
+
+/* .note-list ul li { */
+/* break-inside: avoid; */
+/* width: min-content;
+    height: min-content; */
+/* } */
+
+.note-text {
+    padding: 10px;
+}
+
+.note-img img {
+    margin-bottom: 15px;
+}
+
+
+
+.note-preview img {
+    object-fit: fill;
+    max-width: 100%;
+    /* margin-bottom: 8px; */
 }
 
 .edit-input-btns {
@@ -21,14 +92,324 @@
 
 .edit-input-btns img {
     cursor: pointer;
-    width: 35px;
+    /* width: 35px !important; */
 }
 
-.tool-bar-btns {
+div.tool-bar-btns {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
 }
 
 .tool-bar-btns img {
+    display: flex;
     cursor: pointer;
+    width: unset !important;
+}
+
+.notes-filter-input {
+    display: flex;
+    height: 30px;
+    width: 470px;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(241, 243, 244);
+    border: 2px solid rgb(239, 238, 236);
+    border-radius: 10px;
+    gap: 30px;
+    box-shadow: 1px 6px 15px -2px rgba(0, 0, 0, 0.18)
+}
+
+.notes-filter-input img {
+    width: 25px;
+    cursor: pointer;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+}
+
+.search-icon:hover {
+    background-color: rgb(211, 212, 214);
+    /* padding: 7px; */
+    transition: 0.8s;
+    border-radius: 50px;
+}
+
+.notes-filter-input input {
+    border: none;
+    background-color: rgb(241, 243, 244);
+    width: 400px;
+    font-size: 1.2rem;
+    color: grey;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+.notes-filter-input:focus,
+textarea:focus,
+select:focus {
+    background-color: white;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    font-family: PT-sans-regular;
+    font-size: 1.2rem;
+    gap: 5px;
+}
+
+.select-filters {
+    border: 2px solid rgb(219, 219, 217);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.keep-header-layout {
+    border-bottom: 2px solid rgb(219, 219, 217);
+    padding: 25px 20px 25px 20px;
+}
+
+
+.keep-img-header {
+    width: 70px;
+}
+
+.keep-img-nav {
     width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+
+.keep-logo {
+    font-family: PT-sans-regular;
+    font-size: 1.9rem;
+    color: rgb(95, 99, 104);
+    font-size: 27px;
+    line-height: 24px;
+    vertical-align: middle;
+    top: -1.5px;
+    font-weight: bold;
+}
+
+.keep-img-nav-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+.keep-img-nav-div:hover {
+    background-color: rgb(211, 212, 214);
+    transition: 0.8s;
+    border-radius: 50px;
+}
+
+.notes-menu-icon {
+    width: 35px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.notes-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+.notes-menu:hover {
+    background-color: rgb(211, 212, 214);
+    transition: 0.8s;
+    border-radius: 50px;
+}
+
+.notes-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+}
+
+.notes-avatar-img {
+    width: 55px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.input-container {
+    display: flex;
+    height: 40px;
+    width: 600px;
+    padding: 15px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(239, 238, 236);
+    border-radius: 10px;
+    gap: 30px;
+    box-shadow: 1px 6px 15px -2px rgba(0, 0, 0, 0.18)
+}
+
+.input-container input {
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 500;
+
+}
+
+.all-add-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.edit-input-btns {
+    gap: 10px;
+    position: sticky;
+}
+
+.edit-input-btns img {
+    gap: 10px;
+    opacity: 0.7;
+    width: 30px;
+}
+
+.note-add-delete-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.note-add-delete-btns button {
+    border: none;
+    padding: 5px;
+    gap: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: Roboto-regular;
+    background-color: rgb(255, 255, 255);
+}
+
+.note-add-delete-btns button:hover {
+    background-color: rgb(241, 243, 244);
+    transition: 0.5s;
+}
+
+.toolbar-note-preview {
+    margin: auto;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.toolbar-note-preview.onme {
+    opacity: 1;
+}
+
+.note-preview:hover {
+    box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.32);
+
+}
+
+.remove-note img {
+    opacity: 0.7;
+}
+
+.change-color-note img {
+    opacity: 0.7;
+}
+
+.duplicate-note img {
+    opacity: 0.7;
+}
+
+.mail-note img {
+    opacity: 0.7;
+}
+
+.pin-note img {
+    opacity: 0.7;
+}
+
+/* 
+.remove-note img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.change-color-note img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.insert-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+}
+
+.insert-todos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+}
+
+.color-palette {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+}
+
+.insert-img:hover {
+    background-color: rgb(211, 212, 214);
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.color-palette:hover {
+    background-color: rgb(211, 212, 214);
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.insert-todos:hover {
+    background-color: rgb(211, 212, 214);
+    transition: 0.5s;
+    border-radius: 50px;
 }
