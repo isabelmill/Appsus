@@ -32,6 +32,7 @@
 .mail-preview p {
   margin-right: 30px;
   width: max-content;
+  font-weight: bold;
 }
 
 .mail-preview-btns > * {

@@ -29,12 +29,12 @@ export default {
                 <div @click="showMailAddModal" class="add"><img src="img/mail-img/icons/add.png"></div> 
                 <p @click="showMailAddModal">Compose</p></div>
 
-            <div v-if="markedMails" class="trash"><img @click="removeMails" src="img/mail-img/icons/delete.svg"></div>
-            <div v-if="selectedMail" class="trash"><img @click="beckToMailsList" src="img/mail-img/icons/arrow_back.svg"></div>
+            <div v-if="markedMails && markedMails.length !== 0" class="trash"><img @click="removeMails" src="img/mail-img/icons/delete.svg"></div>
+            <div v-if="selectedMail" class="trash"><img @click="backToMailsList" src="img/mail-img/icons/arrow_back.svg"></div>
            
         </section>
         <section class="mail-main-layout">
-            <mail-folders @filtered="setFilter"/>
+            <mail-folders @filtered="setFilter" @back="backToMailsList" :unreadMails="unreadCount"/>
             <mail-list v-if="!selectedMail" :mails="mailsToShow2"/>
             <mail-details v-if="selectedMail" :mail="selectedMail"/>
             <mail-add v-if="isAddMail" @add="saveSentMail"/>
@@ -42,8 +42,6 @@ export default {
     `,
     components: {
         mailList,
-        // mailService,
-        // eventBus,
         mailDetails,
         mailFilter,
         mailFolders,
@@ -59,12 +57,14 @@ export default {
             },
             selectedMail: null,
             markedMails: null,
+            unreadMails: null,
         }
     },
     created() {
         this.getMails()
-        eventBus.on('selectedMail', this.selectMail)
+        eventBus.on('readMail', this.readMail)
         eventBus.on('markedMail', this.marked)
+
     },
     methods: {
         getMails() {
@@ -72,27 +72,33 @@ export default {
                 .then(mails => {
                     this.mails = mails
                     console.log('mails', mails)
+                    this.mailsUnreadCount()
                 })
         },
         showMailAddModal() {
             this.isAddMail = !this.isAddMail
-            // console.log('isAddMail', this.isAddMail)
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
         },
-
         removeMails() {
             this.mails.forEach((mail) => {
                 if (mail.isSelected) {
+                    if (mail.status === 'trash') {
+                        mail.status = 'deleted'
+                        mail.isSelected = false
+                        mailService.save(mail)
+                        // this.markedMails = null
+                        return
+                    }
                     mail.status = 'trash'
+                    mail.isSelected = false
                     mailService.save(mail)
                 }
             })
-            this.isMarked = false
+            this.markedMails = null
         },
         saveSentMail(newMail) {
-            // console.log(newMail)
             mailService.save(newMail)
                 .then(() => {
                     console.log('New Msg Saved!')
@@ -102,19 +108,22 @@ export default {
                         })
                 })
         },
-        selectMail(mail) {
+        readMail(mail) {
             this.selectedMail = mail
-            console.log('EMAIL SELECTED!!!!', this.selectedMail)
+            this.markedMails = null
+            console.log('MAIL SELECTED!!!!', this.selectedMail)
         },
-        beckToMailsList() {
+        backToMailsList() {
             this.selectedMail = null
+            console.log('selectedMail = null')
         },
         marked() {
-            mailService.query()
-                .then(mails => {
-                    console.log('markedMails', this.markedMails)
-                    return this.markedMails = mails.filter(mail => mail.isSelected === true)
-                })
+            this.markedMails = this.mails.filter(mail => mail.isSelected === true)
+            console.log('marked', this.markedMails)
+        },
+        mailsUnreadCount() {
+            this.unreadMails = this.mails.filter(mail => !mail.isRead)
+            console.log(this.unreadMails.length)
         }
     },
     computed: {
@@ -132,5 +141,9 @@ export default {
                     mail.status === 'important');
             return this.mails.filter(mail => mail.status === this.filterBy.status)
         },
+        unreadCount() {
+            this.mailsUnreadCount()
+            return this.unreadMails
+        }
     },
 }

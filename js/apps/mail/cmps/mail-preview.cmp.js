@@ -6,7 +6,7 @@ export default {
     template: `
         <section class="mail-preview">
             <div class="mail-preview-btns">
-                <img @click="mailSelected" :src="updateCheckBox">
+                <img @click="mailMarked" :src="updateCheckBox">
                 <img @click="mailStarred" :src="updateStar">
                 <img @click="mailImportant" :src="updateImportance">
                 <div>
@@ -32,15 +32,15 @@ export default {
     },
     methods: {
         mailRead() {
-            this.mail.isRead = !this.mail.isRead
+            this.mail.isRead = true
             mailService.save(this.mail)
             console.log('read!:' , this.mail)
-            eventBus.emit('selectedMail', this.mail)
+            eventBus.emit('readMail', this.mail)
         },
-        mailSelected() {
+        mailMarked() {
             this.mail.isSelected = !this.mail.isSelected
             mailService.save(this.mail)
-            console.log('isSelected!:')
+            console.log('isMarked!:')
             eventBus.emit('markedMail', 'marked')
         },
         mailStarred() {
