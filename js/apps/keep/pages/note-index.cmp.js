@@ -89,11 +89,11 @@ export default {
                 .then(() => this.renderNotes())
         },
         duplicateNote(note) {
+            note.isPinned = false
             noteService.duplicate(note)
                 .then(() => this.renderNotes())
         },
         togglePin(note) {
-            console.log('note:', note);
             note.isPinned = !note.isPinned;
             noteService.updateNote(note)
                 .then(() => this.renderNotes())
@@ -101,7 +101,7 @@ export default {
     },
     computed: {
         notesForDisplay() {
-            if (!this.filterBy || this.filterBy.type === '') return this.notes;
+            if (!this.filterBy) return this.notes;
 
             let notes
             const regex = new RegExp(this.filterBy.txt, 'i');
@@ -110,10 +110,7 @@ export default {
             notes = this.notes.filter(note => {
                 return note.type === type
             })
-
-            //should it be by txt? why only all? return later 
             if (type === '') {
-                // return this.notes
                 return this.notes.filter(note =>
                     regex.test(note.info.txt));
             }

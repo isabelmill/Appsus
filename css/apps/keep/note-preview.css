@@ -1,7 +1,7 @@
 .note-preview {
     display: flex;
     text-align: center;
-    margin: 10px;
+    /* margin: 10px; */
     border: 2px solid rgb(221, 220, 217);
     border-radius: 10px;
     padding: 10px;
@@ -9,6 +9,8 @@
     break-inside: avoid;
     align-items: center;
     justify-content: center;
+    min-width: 150px;
+    min-height: 100px;
 }
 
 /* .note-preview-container:hover {
@@ -36,11 +38,12 @@
 }
 
 .note-details h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: unset;
 }
 
 .note-list {
-    display: block;
+    display: inline-block;
     max-width: 1200px;
     padding: 50px;
     columns: 4;
@@ -59,7 +62,7 @@ hr {
 }
 
 ul.todos-container {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     /* flex-direction: column; */
     justify-content: flex-start;
@@ -86,6 +89,7 @@ ul.todos-container {
 .note-preview img {
     object-fit: fill;
     max-width: 100%;
+    border-radius: 10px;
     /* margin-bottom: 8px; */
 }
 
@@ -179,6 +183,7 @@ select:focus {
     border: 2px solid rgb(219, 219, 217);
     border-radius: 5px;
     padding: 10px;
+    width: 630px;
 }
 
 .keep-header-layout {
@@ -437,7 +442,7 @@ select:focus {
 }
 
 section.note-preview:first-child {
-    margin-bottom: 35px;
+    margin-bottom: 15px;
 }
 
 .drop-down-colors {
@@ -514,4 +519,76 @@ section.note-preview:first-child {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.user-note-inputs i {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.note-edit-container {
+    position: fixed;
+    /* z-index: 2; */
+    background-color: white;
+    width: 400px;
+    height: 450px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 50;
+
+}
+
+.edit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.edit-container label {
+    font-size: 1.9rem;
+}
+
+.edit-container input {
+    padding: 6px;
+    border-radius: 5px;
+    /* border: none; */
+    border: 2px solid rgb(239, 238, 236);
+    font-size: 1.2rem;
+}
+
+.note-todos-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.edit-close-btn {
+    display: flex;
+    width: 100px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 35px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.2rem;
+
+}
+
+.note-info {
+    cursor: pointer;
+}
+
+.checked {
+    text-decoration: line-through;
 }

@@ -34,6 +34,8 @@ function remove(noteId) {
 }
 
 function createNote(note) {
+    console.log('note:', note);
+    console.log('input.name:', note.inputs[0].name);
     let info = {
         txt: '',
         url: '',
@@ -48,23 +50,28 @@ function createNote(note) {
             url: note.input
         }
     else if (note.type === 'note-todos') {
+        // if (!note.inputs[1].name) note.inputs[1].name === 'todo'
         info = {
-            label: note.input,
             todos: [{
-                    txt: 'Do this 1',
+                    txt: note.input,
                     isDone: false,
                     isEdit: false
                 },
                 {
-                    txt: 'Do this 2',
+                    txt: note.inputs[0].name,
                     isDone: false,
                     isEdit: false
                 },
-                {
-                    txt: 'Do this 3',
-                    isDone: false,
-                    isEdit: false
-                },
+                // {
+                //     txt: note.inputs[1].name,
+                //     isDone: false,
+                //     isEdit: false
+                // },
+                // {
+                //     txt: note.inputs[2].name,
+                //     isDone: false,
+                //     isEdit: false
+                // },
             ]
         }
     }
