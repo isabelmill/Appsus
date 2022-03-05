@@ -59,6 +59,7 @@
   display: flex;
   padding: 25px 20px 25px 20px;
   width: 100%;
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif !important;
 }
 
 .keep-header-layout {

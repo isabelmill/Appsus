@@ -4,7 +4,7 @@
     border: 2px solid rgb(221, 220, 217);
     border-radius: 10px;
     padding: 10px;
-    font-family: Roboto-regular;
+    font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif !important;
     break-inside: avoid;
     align-items: center;
     justify-content: center;
