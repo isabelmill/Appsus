@@ -5,7 +5,7 @@
 
 .mail-header nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: stretch;
   align-items: center;
   height: 115px;
   width: 100%;
@@ -21,6 +21,7 @@
 .icons-bar {
   display: flex;
   margin-right: 30px;
+  margin-left: auto;
   gap: 10px;
 }
 
@@ -51,14 +52,17 @@
   background: url(/img/mail-img/icons/search.svg) no-repeat left;
   background-size: 24px;
   background-position: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   font: 16px/28px Roboto, RobotoDraft, Arial, sans-serif;
   border-radius: 8px;
-  width: 750px;
   height: 50px;
   border: 1px solid transparent;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.mails-filter input {
+  width: 800px;
 }
 
 .avatar-anna {
@@ -73,4 +77,83 @@
 
 .fucus-off {
   background-color: var(--gray-light);
+}
+
+@media (max-width: 1280px) {
+  .mails-filter input {
+    width: 700px;
+  }
+}
+
+@media (max-width: 1170px) {
+  .mails-filter input {
+    width: 600px;
+  }
+}
+
+@media (max-width: 1070px) {
+  .mails-filter input {
+    width: 400px;
+  }
+}
+
+@media (max-width: 880px) {
+  .mails-filter input {
+    width: 300px;
+  }
+}
+
+@media (max-width: 780px) {
+  .mails-filter input {
+    width: 200px;
+  }
+}
+
+@media (max-width: 680px) {
+  .mails-filter input {
+    width: 100px;
+  }
+}
+
+@media (max-width: 580px) {
+  .mail-header {
+    height: auto;
+  }
+  .mails-filter input {
+    width: 250px;
+  }
+  .mail-header nav {
+    flex-flow: column;
+  }
+  .icons-bar {
+    display: none;
+  }
+  .mail-header nav {
+    margin-bottom: 20px;
+    height: auto;
+  }
+}
+
+@media (max-width: 405px) {
+  .mail-header nav {
+    width: 220px;
+    margin: 20px;
+
+  }
+  .mail-filter input{
+    width: 150px;
+  }
+  .mail-filter {
+    width: 200px;
+    margin: 20px;
+  }
+}
+
+@media (max-width: 330px) {
+  .mails-filter input {
+    width: 100px;
+  }
+  .mail-filter {
+    width: 150px;
+  }
 }

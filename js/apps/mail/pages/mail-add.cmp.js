@@ -36,8 +36,8 @@ export default {
                 isImportant: false,
                 status: 'sent',
                 sentAt: {
-                    time: '9:00 AM',
-                    date: '06-02-2022',
+                    time: '',
+                    date: 'Mar 6',
                 },
             },
             isFocus: false,

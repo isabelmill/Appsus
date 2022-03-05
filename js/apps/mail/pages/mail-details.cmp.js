@@ -39,8 +39,6 @@ export default {
     methods: {
         mailStarred() {
             this.mail.isStarred = !this.mail.isStarred
-            if (this.mail.isStarred) this.mail.status = 'starred'
-            else this.mail.status = 'inbox'
             mailService.save(this.mail)
             console.log('Starred!:')
         },
@@ -51,7 +49,8 @@ export default {
             else return `img/mail-img/icons/star_border.svg`
         },
         updateAvatar() {
-            let num = utilService.getRandomIntInclusive(1, 5)
+            if (this.mail.status === 'sent') return `img/mail-img/icons/Avatar_Anna.svg`
+            let num = utilService.getRandomIntInclusive(1, 10)
             return `img/mail-img/avatars/Avatar-Maker-${num}.svg`
         },
     },
