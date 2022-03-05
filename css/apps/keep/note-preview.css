@@ -202,7 +202,7 @@ select:focus {
 
 .notes-menu-icon {
     width: 35px;
-    opacity: 0.6;
+    /* opacity: 0.6; */
     cursor: pointer;
 }
 

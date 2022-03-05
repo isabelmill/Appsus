@@ -105,11 +105,13 @@ section.book-app {
     font-size: 3rem;
     margin-bottom: 50px;
     margin-top: 20px;
+    font-weight: unset;
 }
 
 .book-filter h2 {
     font-size: 1.4rem;
     margin-bottom: 50px;
+    font-weight: unset;
 }
 
 .book-filter input {
@@ -262,6 +264,7 @@ section.book-app {
 .books-main-details-first {
     margin-bottom: 60px;
     width: 600px;
+    font-weight: unset;
 }
 
 .book-main-details .author {
@@ -446,42 +449,6 @@ select:focus {
     margin-top: 20px;
 }
 
-.about-page h3 {
-    width: 1000px;
-    margin-top: 60px;
-    font-size: 2rem;
-    text-align: center;
-    color: rgb(181, 210, 255);
-    transition: 0.5s;
-    cursor: default;
-}
-
-.about-page h5 {
-    width: 1000px;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.about-page p {
-    text-align: center;
-}
-
-.about-page h3:hover {
-    color: rgb(131, 176, 243);
-    transition: 0.5s;
-}
-
-.about-page img {
-    width: 900px;
-}
-
-.about-page p {
-    margin-top: 60px;
-    margin-bottom: 60px;
-    width: 800px;
-    font-size: 1.5rem;
-}
-
 
 .home-page {
     display: flex;
@@ -628,6 +595,12 @@ select:focus {
 }
 
 .search-google h1 {
+    font-weight: unset;
+    margin: 0;
+}
+
+.search-google h3 {
+    font-weight: unset;
     margin: 0;
 }
 

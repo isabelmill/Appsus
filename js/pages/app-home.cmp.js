@@ -2,9 +2,11 @@ export default {
     template: `
         <section class="home-page-layout">
             <div class="main-layout">
-            <p>Help you find....</p>
-            <h3>Books for any mood</h3>
-            <router-link to="/book"><button>Go to books</button></router-link>
+            <div class="apps-btns">
+            <router-link to="/mail"><img src="./img/mail.png" alt=""></router-link>
+            <router-link to="/keep"><img src="./img/keep.png" alt=""></router-link>
+            <router-link to="/book"><img src="./img/book.png" alt=""></router-link>
+            </div>
             </div>
         </section>
     `,
