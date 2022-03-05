@@ -1,0 +1,62 @@
+.mail-details {
+  font-variant-ligatures: no-contextual;
+  -webkit-font-smoothing: antialiased;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  color: #202124;
+  margin-left: 30px;
+  width: 100%;
+}
+
+.mail-details h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 20px 0 20px 60px
+}
+
+.avatar-img {
+  height: 45px;
+  width: 45px;
+}
+
+.mail-details .bar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--grey);
+  padding-bottom: 10px;
+}
+
+.second {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bar div:last-of-type {
+  margin-left: auto;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  letter-spacing: 0.5px;
+  color: #5f6368;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+.mail-details small {
+  letter-spacing: 0.5px;
+  color: #5f6368;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.mail-details p {
+  margin-left: 65px;
+  margin-right: 65px;
+  letter-spacing: 0.5px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  height: 200px;
+}

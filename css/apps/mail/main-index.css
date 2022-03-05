@@ -11,6 +11,12 @@
   margin-left: 120px;
 }
 
+.star {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
 .add {
   height: 24px;
   width: 24px;
