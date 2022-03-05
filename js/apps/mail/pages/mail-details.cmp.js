@@ -6,26 +6,26 @@ export default {
     template: `
         <section v-if="mail" class="mail-details">
             <h1>{{mail.subject}}</h1>
-            <div>
-                <div><img :src="updateAvatar"></div>
-                <div>
+            <div class="bar">
+                <div class="avatar-img"><img :src="updateAvatar"></div>
+                <div class="second">
                     <h3>{{mail.user}} <small><{{mail.from}}></small></h3>
                     <small>to Appsus@gmail.com</small>
                 </div>
-                <div>
-                    <small>{{mail.sentAt.date}} {{mail.sentAt.time}}</small>
-                    <img @click="mailStarred" :src="updateStar">
+                <div class="second-date">
+                    <small>{{mail.sentAt.date}}, {{mail.sentAt.time}}</small>
+                    <div class="star"><img @click="mailStarred" :src="updateStar"></div>
                 </div>
             </div>
-            <div>
+            <div class="body">
                 <p>{{mail.body}}</p>
             </div>
-            <div>
+            <!-- <div>
                 <h3>From: <span><{{mail.from}}></span>
                     Sent: <span>{{mail.sentAt.date}} {{mail.sentAt.time}}</span>
                     Subject: <span>{{mail.subject}}</span>
                 </h3>
-            </div>
+            </div> -->
         </section>
     `,
     components: {
