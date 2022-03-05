@@ -24,7 +24,7 @@
   transition: 0.1s;
   border-radius: 50%;
 }
-/* /////////// */
+
 .star {
   height: 24px;
   width: 24px;
@@ -58,14 +58,14 @@
 }
 
 .icon {
-  height: 45px;
-  width: 45px;
+  height: 35px;
+  width: 35px;
 }
-.icon:hover {
+/* .icon:hover {
   background-color: rgb(211, 212, 214);
   transition: 0.1s;
   border-radius: 50%;
-}
+} */
 
 @media (max-width: 1150px) {
   .trash {

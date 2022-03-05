@@ -40,11 +40,11 @@
   align-items: center;
   justify-content: center;
 }
-.mails-folders div:hover {
+/* .mails-folders div:hover {
   background-color: rgb(211, 212, 214);
   transition: 0.1s;
   border-radius: 50%;
-}
+} */
 
 .selected-folder {
   background-color: #fcc5bf;

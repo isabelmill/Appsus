@@ -39,21 +39,15 @@ export default {
     },
     methods: {
         setFilter(val) {
-            console.log('folder!', val)
             this.folder = val
             this.$emit('filtered', this.folder)
             this.$emit('back', 'null')
 
-            // this.isFolder.filters(folder => folder = false)
             this.isFolder[this.preFolder] = !this.isFolder[this.preFolder]
             this.preFolder = val
             this.isFolder[val] = !this.isFolder[val]
-
-            console.log('this.isFolder[val]', this.isFolder[val])
-            console.log('this.isFolder', this.isFolder)
         },
         changeColor(val) {
-            // console.log('val', val)
             return this.isFolder[val] === true ? 'selected-folder' : ''
         },
     },

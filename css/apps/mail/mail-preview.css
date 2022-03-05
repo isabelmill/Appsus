@@ -40,16 +40,28 @@
 .mail-preview-btns img {
   display: flex;
   height: 24px;
+  width: 24px;
+
+}
+
+.icon-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 35px;
   cursor: pointer;
+}
+
+.icon-btn:hover {
+  background-color: rgb(211, 212, 214);
+  transition: 0.1s;
+  border-radius: 50%;
 }
 
 .bold {
   font-weight: bold;
 }
-
-/* .sub{
-  text-align: left;
-} */
 
 @media (max-width: 910px) {
   .sub {

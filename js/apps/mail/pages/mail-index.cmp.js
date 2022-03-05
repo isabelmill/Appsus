@@ -11,7 +11,6 @@ import mailAdd from './mail-add.cmp.js'
 import mailDetails from './mail-details.cmp.js';
 
 export default {
-    // props: [""],
     template: `
         <section class="mail-header">
             <nav>
@@ -22,8 +21,6 @@ export default {
                 </ul> 
                 <mail-filter @filtered="setFilterTxt"></mail-filter> 
                 <ul class="icons-bar">
-                    <!-- <li><img src="img/mail-img/icons/help.svg"></li>
-                    <li><img src="img/mail-img/icons/settings.svg"></li> -->
                     <li><div class="icon"><img src="img/mail-img/icons/apps.svg"></div></li>
                     <li><div class="avatar-anna"><img src="img/mail-img/icons/Avatar_Anna.svg"></div></li>
                 </ul>

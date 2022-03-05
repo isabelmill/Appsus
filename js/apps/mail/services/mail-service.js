@@ -10,11 +10,6 @@ export const mailService = {
     remove,
     save,
     get,
-    // getEmptyBook,
-    // addReview,
-    // getBooks,
-    // addGoogleBook,
-    // _setNextPrevBookId
 }
 
 const MAILS_KEY = 'mailsData'
@@ -41,9 +36,6 @@ function save(mail) {
 
 function get(mailId) {
     return storageService.get(MAILS_KEY, mailId)
-    // .then(book => {
-    //     return _setNextPrevBookId(book)
-    // })
 }
 
 function _createMails() {
@@ -249,18 +241,3 @@ function _createMails() {
     }
     return mails;
 }
-
-// user
-const loginUser = {
-    email: 'user@appsus.com',
-    fullName: 'Appsus Mabsus'
-}
-
-// const criteria = {
-//     status: 'inbox/sent/trash/draft',
-//     txt: 'puki', // no need to support complex text search
-//     isRead: false, // (if missing: show all)
-//     isStared: false, // (if missing: show all)
-//     isImportant: false, // (if missing: show all)
-//     // isSent: false,
-// }

@@ -1,10 +1,4 @@
 import {
-    mailService
-} from '../services/mail-service.js'
-import {
-    utilService
-} from '../services/util-service.js'
-import {
     eventBus
 } from '../../../services/eventBus-service.js';
 
@@ -27,8 +21,8 @@ export default {
         return {
             newMail: {
                 id: '',
-                from: 'Appsus Mabsus', ///My name
-                user: '', ///To
+                from: 'Appsus Mabsus', 
+                user: '', 
                 subject: '',
                 body: '',
                 isRead: true,

@@ -14,11 +14,4 @@ export default {
     components: {
         mailPreview,
     },
-    created() { },
-    data() {
-        return {}
-    },
-    methods: {},
-    computed: {},
-    unmounted() { },
 }

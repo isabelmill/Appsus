@@ -20,22 +20,8 @@ export default {
             <div class="body">
                 <p>{{mail.body}}</p>
             </div>
-            <!-- <div>
-                <h3>From: <span><{{mail.from}}></span>
-                    Sent: <span>{{mail.sentAt.date}} {{mail.sentAt.time}}</span>
-                    Subject: <span>{{mail.subject}}</span>
-                </h3>
-            </div> -->
         </section>
     `,
-    components: {
-    },
-    data() {
-        return {
-        };
-    },
-    created() {
-    },
     methods: {
         mailStarred() {
             this.mail.isStarred = !this.mail.isStarred

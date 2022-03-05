@@ -12,7 +12,6 @@ export default {
     },
     methods: {
         setFilter() {
-            console.log('filter!')
             this.$emit('filtered', this.txt)
         }
     },
