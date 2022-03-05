@@ -9,7 +9,7 @@ export default {
        <form class="mail-txt" @submit.prevent>
             <input v-model="newMail.user" type="text" placeholder="To" required>
             <input v-model="newMail.subject" type="text" placeholder="Subject" required>
-            <textarea  v-model="newMail.body" cols="30" rows="10" required></textarea>
+            <textarea  v-model="newMail.body" cols="30" rows="10"></textarea>
             <button @click="add">send</button>
         </form>
     </section>
@@ -22,6 +22,7 @@ export default {
                 user: '', ///To
                 subject: '',
                 body: '',
+                isRead: true,
                 isStarred: false,
                 isImportant: false,
                 status: 'sent',
@@ -34,42 +35,9 @@ export default {
     },
     methods: {
         add() {
+            if(!this.newMail.subject || 
+                !this.newMail.user) return
             this.$emit('add', { ...this.newMail})
-            // .then(() => {
-            //     this.newMail = {
-            //         from: '',
-            //         user: 'Appsus Mabsus',
-            //         subject: '',
-            //         body: '',
-            //         isStarred: false,
-            //         isImportant: false,
-            //         status: 'sent',
-            //         sentAt: {
-            //             time: '9:00 AM',
-            //             date: '06-02-2022',
-            //         },
-            //     }
-            // });
         }
-        // save() {
-        //     mailService.save({ ...this.newMail })
-        //         .then(() => {
-        //             this.newMail = {
-        //                 id: utilService.makeId(),
-        //                 from: '',
-        //                 user: 'Appsus Mabsus',
-        //                 subject: '',
-        //                 body: '',
-        //                 isStarred: false,
-        //                 isImportant: false,
-        //                 status: 'sent',
-        //                 sentAt: {
-        //                     time: '9:00 AM',
-        //                     date: '06-02-2022',
-        //                 },
-        //             }
-        //             console.log('New Msg Saved!')
-        //         })
-        // }
     },
 }

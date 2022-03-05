@@ -221,7 +221,7 @@ function _createMails() {
                 isRead: false,
                 isStarred: false,
                 isImportant: false,
-                status: 'sent',
+                status: 'inbox',
                 sentAt: {
                     time: '2:35 PM',
                     date: '01-02-2022',

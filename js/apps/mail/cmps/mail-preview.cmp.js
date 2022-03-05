@@ -10,21 +10,21 @@ export default {
                 <img @click="mailStarred" :src="updateStar">
                 <img @click="mailImportant" :src="updateImportance">
                 <div>
-                    <p @click="mailRead">{{mail.user}}</p>
+                    <p @click="mailRead" :class="updateBold">{{mail.user}}</p>
                 </div>
             </div>
             <div>
-                <p @click="mailRead">{{mail.subject}}</p>
+                <p @click="mailRead" :class="updateBold">{{mail.subject}}</p>
             </div>
             <div>
-                <p>{{mail.sentAt.date}}</p>
+                <p @click="mailRead" :class="updateBold">{{mail.sentAt.date}}</p>
             </div>
         </section>
     `,
     components: {
     },
-    created() { 
-        
+    created() {
+
     },
     data() {
         return {
@@ -34,28 +34,24 @@ export default {
         mailRead() {
             this.mail.isRead = true
             mailService.save(this.mail)
-            console.log('read!:' , this.mail)
+            // console.log('read!:', this.mail)
             eventBus.emit('readMail', this.mail)
         },
         mailMarked() {
             this.mail.isSelected = !this.mail.isSelected
             mailService.save(this.mail)
-            console.log('isMarked!:')
+            // console.log('isMarked!:')
             eventBus.emit('markedMail', 'marked')
         },
         mailStarred() {
             this.mail.isStarred = !this.mail.isStarred
-            if(this.mail.isStarred) this.mail.status = 'starred' 
-            else this.mail.status = 'inbox'
             mailService.save(this.mail)
-            console.log('Starred!:')
+            // console.log('Starred!:')
         },
         mailImportant() {
             this.mail.isImportant = !this.mail.isImportant
-            if(this.mail.isImportant) this.mail.status = 'important' 
-            else this.mail.status = 'inbox'
             mailService.save(this.mail)
-            console.log('important! XXX:')
+            // console.log('important! XXX:')
         },
 
     },
@@ -72,5 +68,8 @@ export default {
             if (this.mail.isImportant) return `img/mail-img/icons/important_full.svg`
             else return `img/mail-img/icons/important.svg`
         },
+        updateBold() {
+            return { bold: !this.mail.isRead }
+        }
     },
 }

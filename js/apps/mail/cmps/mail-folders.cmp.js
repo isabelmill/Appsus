@@ -3,7 +3,7 @@ export default {
     template: `
     <section class="mails-folders">
         <ul>
-            <li @click="setFilter('')" class="inbox-folder"> 
+            <li @click="setFilter('inbox')" class="inbox-folder"> 
                 <div><img src="img/mail-img/icons/inbox.svg"></div>
                 Inbox <span class="inbox-count">||{{unreadMails.length}}</span></li>
             <li @click="setFilter('starred')">
@@ -21,18 +21,16 @@ export default {
         </ul>
     </section>
     `,
-    data() {
+    data() {    
         return {
-            filterBy: {
-                status: '',
-            }
+            folder: '',
         };
     },
     methods: {
-        setFilter(folder) {
-            console.log('folder!', folder)
-            this.filterBy.status = folder
-            this.$emit('filtered', { ...this.filterBy })
+        setFilter(val) {
+            console.log('folder!', val)
+            this.folder = val
+            this.$emit('filtered', this.folder)
             this.$emit('back', 'null')
         }
     },

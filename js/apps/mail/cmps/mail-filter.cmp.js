@@ -1,20 +1,18 @@
 export default {
     template: `
     <section class="mails-filter">
-        <input @input="setFilter" type="text" v-model="filterBy.txt" class="mail-filter" placeholder="Search mail">
+        <input @input="setFilter" type="text" v-model="txt" class="mail-filter" placeholder="Search mail">
     </section>
     `,
     data() {
         return {
-            filterBy: {
-                txt: '',
-            }
+            txt: '',
         };
     },
     methods: {
         setFilter() {
             console.log('filter!')
-            this.$emit('filtered', { ...this.filterBy })
+            this.$emit('filtered', this.txt)
         }
     },
 }

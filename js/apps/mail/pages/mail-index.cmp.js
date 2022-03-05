@@ -16,7 +16,7 @@ export default {
                     <li><img class="logo-img" src="img/mail-img/logo/gmail.png"></li>
                     <li class="logo-txt">Gmail</li>
                 </ul> 
-                <mail-filter @filtered="setFilter"></mail-filter>
+                <mail-filter @filtered="setFilterTxt"></mail-filter> 
                 <ul class="icons-bar">
                     <li><img src="img/mail-img/icons/help.svg"></li>
                     <li><img src="img/mail-img/icons/settings.svg"></li>
@@ -33,9 +33,9 @@ export default {
             <div v-if="selectedMail" class="trash"><img @click="backToMailsList" src="img/mail-img/icons/arrow_back.svg"></div>
            
         </section>
-        <section class="mail-main-layout">
-            <mail-folders @filtered="setFilter" @back="backToMailsList" :unreadMails="unreadCount"/>
-            <mail-list v-if="!selectedMail" :mails="mailsToShow2"/>
+        <section v-if="mails" class="mail-main-layout">
+            <mail-folders @filtered="setFolder" @back="backToMailsList" :unreadMails="unreadCount"/>
+            <mail-list v-if="!selectedMail" :mails="mailsToShow"/>
             <mail-details v-if="selectedMail" :mail="selectedMail"/>
             <mail-add v-if="isAddMail" @add="saveSentMail"/>
         </section>
@@ -53,7 +53,7 @@ export default {
             mails: null,
             filterBy: {
                 txt: '',
-                status: ''
+                folder: ''
             },
             selectedMail: null,
             markedMails: null,
@@ -62,6 +62,7 @@ export default {
     },
     created() {
         this.getMails()
+        this.filterBy.folder = 'inbox'
         eventBus.on('readMail', this.readMail)
         eventBus.on('markedMail', this.marked)
 
@@ -71,15 +72,17 @@ export default {
             mailService.query()
                 .then(mails => {
                     this.mails = mails
-                    console.log('mails', mails)
                     this.mailsUnreadCount()
                 })
         },
         showMailAddModal() {
             this.isAddMail = !this.isAddMail
         },
-        setFilter(filterBy) {
-            this.filterBy = filterBy
+        setFilterTxt(txt) {
+            this.filterBy.txt = txt
+        },
+        setFolder(folder) {
+            this.filterBy.folder = folder
         },
         removeMails() {
             this.mails.forEach((mail) => {
@@ -87,8 +90,9 @@ export default {
                     if (mail.status === 'trash') {
                         mail.status = 'deleted'
                         mail.isSelected = false
+                        mail.isStarred = false
+                        mail.isImportant = false
                         mailService.save(mail)
-                        // this.markedMails = null
                         return
                     }
                     mail.status = 'trash'
@@ -101,7 +105,6 @@ export default {
         saveSentMail(newMail) {
             mailService.save(newMail)
                 .then(() => {
-                    console.log('New Msg Saved!')
                     mailService.query()
                         .then(mails => {
                             this.mails = mails
@@ -111,35 +114,37 @@ export default {
         readMail(mail) {
             this.selectedMail = mail
             this.markedMails = null
-            console.log('MAIL SELECTED!!!!', this.selectedMail)
+            this.mails.forEach(mail => mail.isSelected = false)
         },
         backToMailsList() {
             this.selectedMail = null
-            console.log('selectedMail = null')
         },
         marked() {
             this.markedMails = this.mails.filter(mail => mail.isSelected === true)
-            console.log('marked', this.markedMails)
         },
         mailsUnreadCount() {
+            if (!this.mails) return
             this.unreadMails = this.mails.filter(mail => !mail.isRead)
-            console.log(this.unreadMails.length)
         }
     },
     computed: {
-        // mailsToShow() {
-        //     if (!this.filterBy.txt) return this.mails;
-        //     const regexTxt = new RegExp(this.filterBy.txt, 'i')
-        //     return this.mails.filter(mail => regexTxt.test(mail.user))
-        // },
-        mailsToShow2() {
-            // if(this.filterBy.status === '') return this.mails.filter(mail => mail.status === '');
-            if (!this.filterBy.status)
-                return this.mails.filter(mail =>
-                    mail.status === 'inbox' ||
-                    mail.status === 'starred' ||
-                    mail.status === 'important');
-            return this.mails.filter(mail => mail.status === this.filterBy.status)
+        mailsToShow() {
+            if (!this.filterBy.folder && !this.filterBy.txt) return this.mails
+            const regexTxt = new RegExp(this.filterBy.txt, 'i')
+
+            if (this.filterBy.folder === 'inbox') return this.mails.filter(mail =>
+                (mail.status === 'inbox') && regexTxt.test(mail.subject + mail.user))
+
+            if (this.filterBy.folder === 'trash') return this.mails.filter(mail =>
+                (mail.status === 'trash') && regexTxt.test(mail.subject + mail.user))
+            if (this.filterBy.folder === 'sent') return this.mails.filter(mail =>
+                (mail.status === 'sent') && regexTxt.test(mail.subject + mail.user))
+           
+            if (this.filterBy.folder === 'starred') return this.mails.filter(mail =>
+                (mail.isStarred) && regexTxt.test(mail.subject + mail.user))
+
+            if (this.filterBy.folder === 'important') return this.mails.filter(mail =>
+                (mail.isImportant) && regexTxt.test(mail.subject + mail.user))
         },
         unreadCount() {
             this.mailsUnreadCount()
