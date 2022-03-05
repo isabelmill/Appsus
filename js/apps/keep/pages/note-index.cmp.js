@@ -38,13 +38,13 @@ export default {
             </header>
 
             <main class="keep-main-layout">
-            <div class="keep-side-bar-layout">
+            <!-- <div class="keep-side-bar-layout">
              <ul>
-              <li>puki</li>
-              <li>puki</li>
-              <li>puki</li>
+              <li></li>
+              <li></li>
+              <li></li>
              </ul>
-            </div>
+            </div> -->
             <div class="notes-main-layout">
             <note-add @added="renderNotes"></note-add>
             <note-list :notes="notesForDisplay" ></note-list>
@@ -111,7 +111,7 @@ export default {
                 return note.type === type
             })
             if (type === '') {
-                return this.notes.filter(note =>
+                return this.notes && this.notes.filter(note =>
                     regex.test(note.info.txt));
             }
             return notes

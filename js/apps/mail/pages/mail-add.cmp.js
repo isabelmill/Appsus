@@ -1,6 +1,12 @@
-import { mailService } from '../services/mail-service.js'
-import { utilService } from '../services/util-service.js'
-// import { eventBus } from "../services/eventBus-service.js"
+import {
+    mailService
+} from '../services/mail-service.js'
+import {
+    utilService
+} from '../services/util-service.js'
+import {
+    eventBus
+} from '../../../services/eventBus-service.js';
 
 export default {
     template: `
@@ -18,7 +24,7 @@ export default {
         return {
             newMail: {
                 id: '',
-                from: 'Appsus Mabsus',  ///My name
+                from: 'Appsus Mabsus', ///My name
                 user: '', ///To
                 subject: '',
                 body: '',

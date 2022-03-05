@@ -21,7 +21,6 @@ function query() {
 }
 
 function duplicate(note) {
-    console.log('note:', note);
     return storageService.post(NOTES_KEY, note)
 }
 
@@ -34,8 +33,6 @@ function remove(noteId) {
 }
 
 function createNote(note) {
-    console.log('note:', note);
-    console.log('input.name:', note.inputs[0].name);
     let info = {
         txt: '',
         url: '',
@@ -50,7 +47,6 @@ function createNote(note) {
             url: note.input
         }
     else if (note.type === 'note-todos') {
-        // if (!note.inputs[1].name) note.inputs[1].name === 'todo'
         info = {
             todos: [{
                     txt: note.input,
@@ -62,11 +58,11 @@ function createNote(note) {
                     isDone: false,
                     isEdit: false
                 },
-                // {
-                //     txt: note.inputs[1].name,
-                //     isDone: false,
-                //     isEdit: false
-                // },
+                {
+                    txt: note.inputs[1].name,
+                    isDone: false,
+                    isEdit: false
+                },
                 // {
                 //     txt: note.inputs[2].name,
                 //     isDone: false,
@@ -91,17 +87,17 @@ function _createNotes() {
     if (!notes || !notes.length) {
         notes = [{
                 id: "n101",
-                title: "",
+                title: "Fullstack Me Baby!",
                 type: "note-txt",
                 style: 'white',
                 isPinned: false,
                 info: {
-                    txt: "Fullstack Me Baby!"
+                    txt: ""
                 },
             },
             {
                 id: "n102",
-                title: "Bobi and Me",
+                title: "Doggi",
                 type: "note-img",
                 style: 'white',
                 isPinned: false,
@@ -118,11 +114,11 @@ function _createNotes() {
                 info: {
                     todos: [{
                             txt: "Driving liscence",
-                            doneAt: null
+                            isDone: false,
                         },
                         {
                             txt: "Coding power",
-                            doneAt: 187111111
+                            isDone: false,
                         }
                     ]
                 },
@@ -136,23 +132,43 @@ function _createNotes() {
                 info: {
                     todos: [{
                             txt: "Filter",
-                            doneAt: null
+                            isDone: false,
                         },
                         {
                             txt: "Add note",
-                            doneAt: null
+                            isDone: false,
                         },
                         {
-                            txt: "delete note",
-                            doneAt: null
+                            txt: "Delete note",
+                            isDone: true,
                         },
                         {
-                            txt: "update note",
-                            doneAt: null
+                            txt: "Update note",
+                            isDone: false,
                         },
                     ]
                 },
-            }
+            },
+            {
+                id: "n105",
+                title: "Random Pic",
+                type: "note-img",
+                style: 'white',
+                isPinned: true,
+                info: {
+                    url: "https://picsum.photos/200",
+                },
+            },
+            {
+                id: "n106",
+                title: "I love JS",
+                type: "note-txt",
+                style: 'white',
+                isPinned: true,
+                info: {
+                    txt: ""
+                },
+            },
         ];
         utilService.saveToStorage(NOTES_KEY, notes);
     }

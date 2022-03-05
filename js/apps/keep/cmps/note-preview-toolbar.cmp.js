@@ -2,6 +2,9 @@ import {
     eventBus
 } from '../../../services/eventBus-service.js';
 import {
+    mailService
+} from '../../mail/services/mail-service.js';
+import {
     router
 } from "../../../router.js";
 
@@ -10,22 +13,23 @@ export default {
     template: `
         <section class="notes-toolbar">
             <div class="tool-bar-btns">
+
                 <div @click="remove(note)" class="remove-note">
-                    <img title="remove note" src="./img/keep-img/icons/delete.svg" alt="">
+                    <img title="remove" src="./img/keep-img/icons/delete.svg" alt="">
                 </div>
 
                 <div class="change-color-note">
-                    <img title="color note" @blur="!colorPalette" @click="colorPaletteOpen"   src="./img/keep-img/icons/palette.svg" alt="">
+                    <img title="color" @blur="!colorPalette" @click="colorPaletteOpen"   src="./img/keep-img/icons/palette.svg" alt="">
                 </div>
                 
                 <div class="duplicate-note">
-                    <img title="duplicate note" @click="duplicate" src="./img/keep-img/icons/duplicate.svg" alt="">
+                    <img title="duplicate" @click="duplicate" src="./img/keep-img/icons/duplicate.svg" alt="">
                 </div>
                 <div class="mail-note">
                     <img title="send email" @click="composeMail" src="./img/keep-img/icons/mail.svg" alt="">
                 </div>
                 <div class="pin-note">
-                    <img @click="togglePin" title="pin note" src="./img/keep-img/icons/pin.svg" alt="">
+                    <img @click="togglePin" title="pin" src="./img/keep-img/icons/pin.svg" alt="">
                 </div>
             </div>
         </section>
@@ -50,7 +54,39 @@ export default {
             eventBus.emit('duplicate', this.note)
         },
         composeMail() {
-            alert('not working yet');
+            const type = this.note.type
+            let query = `mail`
+            let content = ''
+
+            if (type === 'note-img') {
+                content = this.note.info.url
+            }
+            if (type === 'note-txt') {
+                content = this.note.info.txt
+            }
+            if (type === 'note-todos') {
+                this.note.info.todos.forEach(todo => {
+                    content += todo.txt
+                })
+            }
+
+            const noteMail = {
+                id: '',
+                from: 'isabel@gmail.com',
+                user: 'Isabel',
+                subject: 'Sent You A Note',
+                body: content,
+                isStarred: false,
+                isImportant: false,
+                status: 'inbox',
+                sentAt: {
+                    time: '9:00 AM',
+                    date: '06-02-2022',
+                },
+            }
+
+            mailService.save(noteMail)
+            router.push(query)
         },
         togglePin() {
             eventBus.emit('togglePin', this.note)

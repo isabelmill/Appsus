@@ -3,6 +3,7 @@ import {
 } from '../../../services/eventBus-service.js';
 import notePreviewToolbar from "./note-preview-toolbar.cmp.js";
 import noteEdit from "./note-edit.cmp.js";
+import noteTodoPreview from "./note-todo-preview.cmp.js";
 
 export default {
     props: ["note"],
@@ -27,7 +28,7 @@ export default {
             <img @click="setColor('#DE4278')" src="./img/keep-img/color-palette/pink.png" alt="">
             <img @click="setColor('#FFFFAA')" src="./img/keep-img/color-palette/yellow.png" alt="">
             <img @click="setColor('#A05DA6')" src="./img/keep-img/color-palette/purple.png" alt="">
-            <img @click="setColor('#6DC067')" src="./img/keep-img/color-palette/green.png" alt="">
+            <img @click="setColor('#FFFFFF')" src="./img/keep-img/color-palette/white.png" alt="">
             </div>
               </transition>
          </div>
@@ -47,7 +48,7 @@ export default {
             <img @click="setColor('#DE4278')"src="./img/keep-img/color-palette/pink.png" alt="">
             <img @click="setColor('#FFFFAA')" src="./img/keep-img/color-palette/yellow.png" alt="">
             <img @click="setColor('#A05DA6')" src="./img/keep-img/color-palette/purple.png" alt="">
-            <img @click="setColor('#6DC067')" src="./img/keep-img/color-palette/green.png" alt="">
+            <img @click="setColor('#FFFFFF')" src="./img/keep-img/color-palette/white.png" alt="">
             </div>
               </transition>
          </div>
@@ -58,10 +59,7 @@ export default {
              <h1>{{note.title}}</h1>
             </div>
              <ul class="todos-container" v-for="todo in note.info.todos"> 
-             <li>
-                <input class="check-box-input" type="checkbox"  v-model="todo.doneAt">
-                <h2>{{todo.txt}}</h2>
-                </li>
+                <note-todo-preview :todo="todo" :note="note"></note-todo-preview>
                 </ul>
 
                 <note-preview-toolbar :class="hoverToolBar"  class="toolbar-note-preview" :note="note" @colorPalette="openColors" > </note-preview-toolbar>
@@ -71,7 +69,7 @@ export default {
             <img @click="setColor('#DE4278')" src="./img/keep-img/color-palette/pink.png" alt="">
             <img @click="setColor('#FFFFAA')" src="./img/keep-img/color-palette/yellow.png" alt="">
             <img @click="setColor('#A05DA6')" src="./img/keep-img/color-palette/purple.png" alt="">
-            <img @click="setColor('#6DC067')" src="./img/keep-img/color-palette/green.png" alt="">
+            <img @click="setColor('#FFFFFF')" src="./img/keep-img/color-palette/white.png" alt="">
             </div>
               </transition>
          </div>
@@ -82,6 +80,7 @@ export default {
     components: {
         'note-preview-toolbar': notePreviewToolbar,
         'note-edit': noteEdit,
+        noteTodoPreview,
     },
     created() {},
     data() {
