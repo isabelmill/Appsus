@@ -30,10 +30,10 @@ const routes = [{
         path: '/keep',
         component: keepApp
     },
-    // {
-    //     // path: '/book/:bookId',
-    //     // component: bookDetails
-    // },
+    {
+        path: '/book/:bookId',
+        component: bookDetails
+    },
 ];
 
 export const router = VueRouter.createRouter({

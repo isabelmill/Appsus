@@ -74,7 +74,7 @@ export default {
                 id: '',
                 from: 'isabel@gmail.com',
                 user: 'Isabel',
-                subject: 'Sent You A Note',
+                subject: this.note.title,
                 body: content,
                 isStarred: false,
                 isImportant: false,
