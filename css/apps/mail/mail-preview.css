@@ -1,17 +1,16 @@
 .mail-preview {
-  /* background-color: rgb(33, 124, 94); */
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   height: 43px;
-  width: 1200px;
+  width: 100%;
   font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   color: var(--black-txt);
   background-color: var(--gray-light);
   border: 1px solid var(--grey);
   transition: all 250ms ease;
-  margin-left: 16px;
+  margin-bottom: 1px;
 }
 
 .mail-preview:hover {
@@ -19,13 +18,9 @@
     0 3px 5px 0 rgb(60 64 67 / 30%), 0 3px 5px 3px rgb(60 64 67 / 15%);
 }
 
-/* .mail-preview ul {
-  padding-left: 0;
-} */
-
 .mail-preview div {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
@@ -52,6 +47,67 @@
   font-weight: bold;
 }
 
-/* .mail-preview-btns:last-child {
-  transform: rotate(90deg);
+/* .sub{
+  text-align: left;
 } */
+
+@media (max-width: 910px) {
+  .sub {
+    display: none;
+  }
+  .mail-preview {
+    width: 700px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 744px) {
+  .mail-preview {
+    width: 650px;
+  }
+}
+
+@media (max-width: 680px) {
+  .mail-preview {
+    width: 500px;
+  }
+}
+
+@media (max-width: 540px) {
+  .dat {
+    display: none;
+  }
+  .mail-preview {
+    width: 470px;
+  }
+}
+
+@media (max-width: 515px) {
+  .mail-preview {
+    width: 415px;
+  }
+}
+
+@media (max-width: 455px) {
+  .mail-preview {
+    width: 380px;
+  }
+}
+
+@media (max-width: 425px) {
+  .mail-preview {
+    width: 350px;
+  }
+}
+@media (max-width: 405px) {
+  .mail-preview {
+    width: 250px;
+  }
+  .mail-preview-btns img {
+    width: 20px;
+    height: 20px;
+  }
+  .nam {
+    font-size: small;
+  }
+}

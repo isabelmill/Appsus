@@ -10,14 +10,14 @@ export default {
                 <img @click="mailStarred" :src="updateStar">
                 <img @click="mailImportant" :src="updateImportance">
                 <div>
-                    <p @click="mailRead" :class="updateBold">{{mail.user}}</p>
+                    <p class="nam" @click="mailRead" :class="updateBold">{{mail.user}}</p>
                 </div>
             </div>
             <div>
-                <p @click="mailRead" :class="updateBold">{{mail.subject}}</p>
+                <p class="sub" @click="mailRead" :class="updateBold">{{mail.subject}}</p>
             </div>
             <div>
-                <p @click="mailRead" :class="updateBold">{{mail.sentAt.date}}</p>
+                <p class="dat" @click="mailRead" :class="updateBold">{{mail.sentAt.date}}</p>
             </div>
         </section>
     `,

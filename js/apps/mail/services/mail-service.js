@@ -61,7 +61,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '7:35 AM',
-                    date: '06-02-2022',
+                    date: 'Mar 6',
                 },
             },
             {
@@ -76,7 +76,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '8:04 AM',
-                    date: '06-02-2022',
+                    date: 'Mar 6',
                 },
             },
             {
@@ -91,7 +91,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '12:47 PM',
-                    date: '05-02-2022',
+                    date: 'Mar 5',
                 },
             },
             {
@@ -106,7 +106,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '11:01 PM',
-                    date: '05-02-2022',
+                    date: 'Mar 5',
                 },
             },
             {
@@ -121,7 +121,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '7:12 PM',
-                    date: '05-02-2022',
+                    date: 'Mar 5',
                 },
             },
             {
@@ -136,7 +136,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '2:00 PM',
-                    date: '05-02-2022',
+                    date: 'Mar 5',
                 },
             },
             {
@@ -151,7 +151,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '4:06 PM',
-                    date: '04-02-2022',
+                    date: 'Mar 4',
                 },
             },
             {
@@ -166,7 +166,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '4:36 PM',
-                    date: '04-02-2022',
+                    date: 'Mar 4',
                 },
             },
             {
@@ -181,7 +181,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '8:36 AM',
-                    date: '03-02-2022',
+                    date: 'Mar 3',
                 },
             },
             {
@@ -196,7 +196,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '9:36 AM',
-                    date: '02-02-2022',
+                    date: 'Mar 2',
                 },
             },
             {
@@ -211,13 +211,13 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '12:38 PM',
-                    date: '01-02-2022',
+                    date: 'Mar 1',
                 },
             },
             {
                 id: utilService.makeId(),
                 from: 'yarinatona@gmail.com',
-                user: 'Yarina Tona',
+                user: 'Yarina viton',
                 subject: 'Great joy!',
                 body: 'Joy will not be here!',
                 isRead: false,
@@ -226,7 +226,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '2:35 PM',
-                    date: '01-02-2022',
+                    date: 'Mar 1',
                 },
             },
             {
@@ -241,7 +241,7 @@ function _createMails() {
                 status: 'inbox',
                 sentAt: {
                     time: '6:46 PM',
-                    date: '01-02-2022',
+                    date: 'Mar 1',
                 }
             },
         ];

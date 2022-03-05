@@ -10,13 +10,13 @@ export default {
                 <div><img :src="starredRed"></div>
                 Starred</li>
             <li @click="setFilter('important')" :class="changeColor('important')">
-                <div><img src="img/mail-img/icons/important_black.svg"></div>
+                <div><img :src="importantRed"></div>
                 Important</li>
             <li @click="setFilter('sent')" :class="changeColor('sent')">
-                <div><img src="img/mail-img/icons/sent.svg"></div>
+                <div><img :src="sentRed"></div>
                 Sent</li>
             <li @click="setFilter('trash')" :class="changeColor('trash')">
-                <div><img src="img/mail-img/icons/delete.svg"></div>
+                <div><img :src="trashRed"></div>
                 Trash</li>
         </ul>
     </section>
@@ -33,6 +33,9 @@ export default {
             },
             preFolder: ''
         };
+    },
+    created() {
+        this.setFilter('inbox')
     },
     methods: {
         setFilter(val) {
@@ -56,25 +59,24 @@ export default {
     },
     computed: {
         inboxRed() {
-            if(this.isFolder.inbox) return "img/mail-img/icons/inbox_red.svg"
+            if (this.isFolder.inbox) return "img/mail-img/icons/inbox_red.svg"
             else return "img/mail-img/icons/inbox.svg"
         },
         starredRed() {
-            if(this.isFolder.starred) return "img/mail-img/icons/star_red.svg"
+            if (this.isFolder.starred) return "img/mail-img/icons/star_red.svg"
             else return "img/mail-img/icons/star_black.svg"
         },
         importantRed() {
-            if(this.isFolder.inbox) return "img/mail-img/icons/inbox_red.svg"
-            else return "img/mail-img/icons/inbox.svg"
+            if (this.isFolder.important) return "img/mail-img/icons/important_full_red.svg"
+            else return "img/mail-img/icons/important_black.svg"
         },
         sentRed() {
-            if(this.isFolder.inbox) return "img/mail-img/icons/inbox_red.svg"
-            else return "img/mail-img/icons/inbox.svg"
+            if (this.isFolder.sent) return "img/mail-img/icons/sent_red.svg"
+            else return "img/mail-img/icons/sent.svg"
         },
         trashRed() {
-            if(this.isFolder.inbox) return "img/mail-img/icons/inbox_red.svg"
-            else return "img/mail-img/icons/inbox.svg"
+            if (this.isFolder.trash) return "img/mail-img/icons/delete_red.svg"
+            else return "img/mail-img/icons/delete.svg"
         }
-        
     }
 }

@@ -1,9 +1,8 @@
 .mails-folders {
-  width: 256px;
+  /* width: 256px; */
   margin-left: 30px;
   color: var(--black-txt);
   font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
-  background-color: rgb(161, 159, 163);
 }
 
 .mails-folders ul {
@@ -48,6 +47,18 @@
 }
 
 .selected-folder {
-  background-color: #ffb8b0;
+  background-color: #fcc5bf;
   color: var(--red-dark);
+}
+
+@media (max-width: 1150px) {
+  .mails-folders li{
+    width: 100%;
+  }
+}
+
+@media (max-width: 405px) {
+  .mails-folders li{
+    width: 250px;
+  }
 }

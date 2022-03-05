@@ -1,22 +1,25 @@
+/* * {
+  box-sizing: border-box;
+} */
+
 body {
-    margin: 0;
+  margin: 0;
 }
 
 ul {
-    list-style: none;
-    padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
-
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
