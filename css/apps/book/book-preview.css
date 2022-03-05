@@ -12,7 +12,9 @@ section.book-app {
     align-items: center;
     justify-content: center;
     font-family: Roboto-regular;
+    font-weight: normal;
 }
+
 
 .main-header .header-container {
     width: 100%;

@@ -99,7 +99,6 @@ export default {
         },
         setColor(color) {
             this.note.style = color
-            console.log('note:', this.note.style);
             eventBus.emit('setColor', this.note)
         },
         openEditMode() {
