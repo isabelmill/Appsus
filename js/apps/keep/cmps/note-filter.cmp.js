@@ -1,5 +1,4 @@
 export default {
-    // props: [""],
     template: `
         <div class="filter-container">
         <div class="notes-filter-input">
