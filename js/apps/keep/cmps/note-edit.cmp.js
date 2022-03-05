@@ -15,6 +15,7 @@ export default {
         <input class="edit-input-content" @change="saveChanges" v-if="note.type === 'note-txt'" type="text" v-model="note.info.txt" placeholder="Text">
 
         <input class="edit-input-content" @change="saveChanges" v-if="note.info.url" type="text" v-model="note.info.url">
+        <input class="edit-input-content" @change="saveChanges" v-if="note.info.vidUrl" type="text" v-model="note.info.vidUrl">
 
         <div v-if="note.type === 'note-todos'" v-for="todo in note.info.todos" class="note-todos-edit">     
         <input   @change="saveChanges" type="checkbox" v-model="todo.isDone">

@@ -67,7 +67,10 @@ export default {
     },
     data() {
         return {
-            filterBy: null,
+            filterBy: {
+                txt: '',
+                type: 'All',
+            },
             notes: null,
         }
     },
@@ -101,20 +104,15 @@ export default {
     },
     computed: {
         notesForDisplay() {
-            if (!this.filterBy) return this.notes;
+            if (!this.filterBy.txt && this.filterBy.type === 'All') return this.notes;
 
-            let notes
             const regex = new RegExp(this.filterBy.txt, 'i');
-            const type = this.filterBy.type
 
-            notes = this.notes.filter(note => {
-                return note.type === type
-            })
-            if (type === '') {
-                return this.notes && this.notes.filter(note =>
-                    regex.test(note.info.txt));
-            }
-            return notes
+
+            if (this.filterBy.type === 'All') return this.notes.filter(note =>
+                regex.test(note.title + note.info.txt))
+            else return this.notes.filter(note =>
+                (note.type === this.filterBy.type) && regex.test(note.info.txt + note.title))
         },
     },
     unmounted() {},

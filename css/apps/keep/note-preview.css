@@ -304,7 +304,7 @@ select:focus {
     transition: 0.5s;
 }
 
-.toolbar-note-preview.onme {
+.toolbar-note-preview.onToolBar {
     opacity: 1;
 }
 
@@ -618,6 +618,15 @@ section.note-preview:first-child {
 
 .checked {
     text-decoration: line-through;
+}
+
+.focus-on {
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+    background-color: #fff;
+}
+
+.focus-off {
+    background-color: var(--gray-light);
 }
 
 @media (max-width: 1300px) {

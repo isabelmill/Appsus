@@ -36,8 +36,19 @@ function createNote(note) {
     let info = {
         txt: '',
         url: '',
-        lable: '',
     };
+
+    let todos = [{
+        txt: note.input,
+        isDone: false,
+    }, ]
+
+    note.inputs.forEach(input => {
+        todos.push({
+            txt: input.name,
+            isDone: false,
+        })
+    })
 
     if (note.type === 'note-txt') info = {
         txt: note.input
@@ -48,27 +59,11 @@ function createNote(note) {
         }
     else if (note.type === 'note-todos') {
         info = {
-            todos: [{
-                    txt: note.input,
-                    isDone: false,
-                    isEdit: false
-                },
-                {
-                    txt: note.inputs[0].name,
-                    isDone: false,
-                    isEdit: false
-                },
-                {
-                    txt: note.inputs[1].name,
-                    isDone: false,
-                    isEdit: false
-                },
-                // {
-                //     txt: note.inputs[2].name,
-                //     isDone: false,
-                //     isEdit: false
-                // },
-            ]
+            todos: todos
+        }
+    } else if (note.type === 'note-vid') {
+        info = {
+            url: note.input
         }
     }
     const newNote = {
@@ -167,6 +162,26 @@ function _createNotes() {
                 isPinned: true,
                 info: {
                     txt: ""
+                },
+            },
+            {
+                id: "n107",
+                title: "My Fav Video",
+                type: "note-vid",
+                style: 'white',
+                isPinned: true,
+                info: {
+                    vidUrl: "https://www.youtube.com/embed/nhBVL41-_Cw",
+                },
+            },
+            {
+                id: "n108",
+                title: "Kitty",
+                type: "note-vid",
+                style: 'white',
+                isPinned: true,
+                info: {
+                    vidUrl: "https://www.youtube.com/embed/ByH9LuSILxU",
                 },
             },
         ];

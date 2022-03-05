@@ -64,6 +64,9 @@ export default {
             if (type === 'note-txt') {
                 content = this.note.info.txt
             }
+            if (type === 'note-vid') {
+                content = this.note.info.vidUrl
+            }
             if (type === 'note-todos') {
                 this.note.info.todos.forEach(todo => {
                     content += todo.txt

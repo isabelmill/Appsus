@@ -18,8 +18,7 @@ export default {
     },
     computed: {
         onFocus() {
-            return this.isFocus ? 'fucus-on' : 'fucus-off'
+            return this.isFocus ? 'fcus-on' : 'fucus-off'
         },
     }
 }
-

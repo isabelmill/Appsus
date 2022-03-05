@@ -1,7 +1,7 @@
 export default {
     template: `
         <div class="filter-container">
-        <div class="notes-filter-input">
+        <div class="notes-filter-input"  >
         <div class="search-icon">
         <img @click="show = !show" src="../img/keep-img/icons/search.PNG" alt="">
         </div>
@@ -10,10 +10,11 @@ export default {
         <Transition name="fade">
           <div v-if="show" class="filters">
            <select class="select-filters" @change="setFilter" v-model="filterBy.type">
-            <option value=''>All</option>
+            <option value='All'>All</option>
             <option value="note-img">Images</option>
             <option value="note-txt">Text</option>
             <option value="note-todos">Todos</option>
+            <option value="note-vid">Videos</option>
            </select>
           </div>
           </Transition>
@@ -27,7 +28,7 @@ export default {
         return {
             show: false,
             filterBy: {
-                txt: null,
+                txt: '',
                 type: '',
             },
         }

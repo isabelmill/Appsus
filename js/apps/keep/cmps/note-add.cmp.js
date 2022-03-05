@@ -33,6 +33,9 @@ export default {
                     <div @click="changeNoteType('note-img')" class="insert-img">
                         <img src="./img/keep-img/icons/insert-img.svg" alt="" title="Image-note">
                     </div>
+                    <div @click="changeNoteType('note-vid')" class="insert-img">
+                        <img src="./img/keep-img/icons/video.svg" alt="" title="Video-note">
+                    </div>
                     <div  @click="changeNoteType('note-todos')" class="insert-todos">
                         <img src="./img/keep-img/icons/list.svg" alt="" title="List-note">
                     </div>
@@ -84,8 +87,9 @@ export default {
                 });
             this.input = ''
             this.title = ''
-            if (this.inputs[0].name) this.inputs[0].name = ''
-            if (this.inputs[1].name) this.inputs[1].name = ''
+            this.inputs.forEach(input => {
+                input.name = ''
+            })
         },
         changeNoteType(type) {
             switch (type) {
@@ -100,6 +104,10 @@ export default {
                 case 'note-todos':
                     this.type = 'note-todos'
                     this.placeHolder = 'List item'
+                    break;
+                case 'note-vid':
+                    this.type = 'note-vid'
+                    this.placeHolder = 'URL address'
                     break;
             }
         },
