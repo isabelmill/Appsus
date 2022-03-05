@@ -8,7 +8,7 @@ import noteTodoPreview from "./note-todo-preview.cmp.js";
 export default {
     props: ["note"],
     template: `
-    <section class="note-preview" :style="{backgroundColor:note.style}" @mouseover="isHovered = true" @mouseleave="isHovered = false" draggable="true">
+    <section class="note-preview" :style="{backgroundColor:note.style}" @mouseover="isHovered = true" @mouseleave="isHovered = false">
 
      <note-edit v-if="isEdit" @close="closeEditMode" :note="note" ></note-edit> 
 
