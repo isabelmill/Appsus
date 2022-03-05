@@ -16,9 +16,9 @@ export default {
             <div class="keep-header-layout">
             <div class="notes-nav">
             <div class="keep-img-nav-div">
-            <img class="keep-img-nav" src="./img/keep-img/icons/nav.PNG" alt="">
+            <img class="keep-img-nav" src="../img/keep-img/icons/nav.PNG" alt="">
             </div>
-            <img class="keep-img-header" src="./img/keep-img/icons/keep-logo2.png" alt="">
+            <img class="keep-img-header" src="../img/keep-img/icons/keep-logo2.png" alt="">
             
             <div class="keep-logo">Keep</div>
             </div>

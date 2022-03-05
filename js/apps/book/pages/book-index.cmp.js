@@ -13,7 +13,7 @@ export default {
 
                 <div class="search-container">
                     <book-filter @filtered="setFilter" />
-                    <img src="./img/book-img/google-book.jpg" alt="">
+                    <img src="./img/book-img/bookimg5.jpg" alt="">
                 </div>
 
                 <book-list v-if="!selectedBook" :books="booksForDisplay" @selected="selectBook" />
