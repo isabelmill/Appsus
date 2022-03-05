@@ -69,6 +69,8 @@ export default {
         this.filterBy.folder = 'inbox'
         eventBus.on('readMail', this.readMail)
         eventBus.on('markedMail', this.marked)
+        eventBus.on('closeMailAddModal', this.showMailAddModal)
+
     },
     methods: {
         getMails() {
