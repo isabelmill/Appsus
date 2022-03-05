@@ -12,12 +12,12 @@ export default {
         <input class="edit-input-title" placeholder="Title" @change="saveChanges" type="text" v-model="note.title" >
         
         <label for="">Info</label>
-        <input class="edit-input-content" @change="saveChanges" v-if="note.info.txt" type="text" v-model="note.info.txt">
+        <input class="edit-input-content" @change="saveChanges" v-if="note.type === 'note-txt'" type="text" v-model="note.info.txt" placeholder="Text">
 
         <input class="edit-input-content" @change="saveChanges" v-if="note.info.url" type="text" v-model="note.info.url">
 
         <div v-if="note.type === 'note-todos'" v-for="todo in note.info.todos" class="note-todos-edit">     
-        <input   @change="saveChanges" type="checkbox" v-model="todo.checked">
+        <input   @change="saveChanges" type="checkbox" v-model="todo.isDone">
         <input class="edit-input-title"  @change="saveChanges" type="text" v-model="todo.txt">
 
         </div>  
@@ -28,9 +28,7 @@ export default {
         </section>
     `,
     components: {},
-    created() {
-        // this.$emit("modalOpen", true);
-    },
+    created() {},
     data() {
         return {}
     },

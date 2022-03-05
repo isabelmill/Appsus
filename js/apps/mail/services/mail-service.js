@@ -1,5 +1,9 @@
-import { storageService } from './async-storage-service.js'
-import { utilService } from './util-service.js'
+import {
+    storageService
+} from './async-storage-service.js'
+import {
+    utilService
+} from './util-service.js'
 
 export const mailService = {
     query,
@@ -26,10 +30,9 @@ function remove(mailId) {
 
 function save(mail) {
     if (mail.id) {
-        console.log(mail)
+        console.log('mail', mail)
         return storageService.put(MAILS_KEY, mail);
-    }
-    else {
+    } else {
         mail.id = utilService.makeId()
         console.log(mail)
         return storageService.post(MAILS_KEY, mail);
@@ -46,8 +49,7 @@ function get(mailId) {
 function _createMails() {
     let mails = utilService.loadFromStorage(MAILS_KEY)
     if (!mails || !mails.length) {
-        mails = [
-            {
+        mails = [{
                 id: utilService.makeId(),
                 from: 'sharon@walla.com',
                 user: 'sharon',

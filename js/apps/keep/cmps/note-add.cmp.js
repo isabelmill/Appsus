@@ -28,13 +28,13 @@ export default {
             <div class="all-add-btns">
                <div class="edit-input-btns">
                     <div @click="changeNoteType('note-txt')" class="text-note">
-                        <img src="./img/keep-img/icons/black-pencil.svg" alt="">
+                        <img src="./img/keep-img/icons/black-pencil.svg" alt="" title="Text-note">
                     </div>
                     <div @click="changeNoteType('note-img')" class="insert-img">
-                        <img src="./img/keep-img/icons/insert-img.svg" alt="">
+                        <img src="./img/keep-img/icons/insert-img.svg" alt="" title="Image-note">
                     </div>
                     <div  @click="changeNoteType('note-todos')" class="insert-todos">
-                        <img src="./img/keep-img/icons/list.svg" alt="">
+                        <img src="./img/keep-img/icons/list.svg" alt="" title="List-note">
                     </div>
                 </div>
 
@@ -85,7 +85,7 @@ export default {
             this.input = ''
             this.title = ''
             if (this.inputs[0].name) this.inputs[0].name = ''
-            if (this.inputs[0].name) this.inputs[1].name = ''
+            if (this.inputs[1].name) this.inputs[1].name = ''
         },
         changeNoteType(type) {
             switch (type) {
