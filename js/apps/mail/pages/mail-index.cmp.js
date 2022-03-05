@@ -16,15 +16,16 @@ export default {
         <section class="mail-header">
             <nav>
                 <ul class="logo-bar">
-                    <li><img src="img/mail-img/icons/menu.svg"></li>
-                    <li><img class="logo-img" src="img/mail-img/logo/gmail.png"></li>
+                    <li><div class="icon"><img src="img/mail-img/icons/menu.svg"></div></li>
+                    <li><div class="logo-img"><img src="img/mail-img/logo/gmail.png"></div></li>
                     <li class="logo-txt">Gmail</li>
                 </ul> 
                 <mail-filter @filtered="setFilterTxt"></mail-filter> 
                 <ul class="icons-bar">
-                    <li><img src="img/mail-img/icons/help.svg"></li>
-                    <li><img src="img/mail-img/icons/settings.svg"></li>
-                    <li><img src="img/mail-img/icons/apps.svg"></li>
+                    <!-- <li><img src="img/mail-img/icons/help.svg"></li>
+                    <li><img src="img/mail-img/icons/settings.svg"></li> -->
+                    <li><div class="icon"><img src="img/mail-img/icons/apps.svg"></div></li>
+                    <li><div class="avatar-anna"><img src="img/mail-img/icons/Avatar_Anna.svg"></div></li>
                 </ul>
             </nav>
         </section>

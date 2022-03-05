@@ -1,12 +1,13 @@
 export default {
     template: `
     <section class="mails-filter">
-        <input @input="setFilter" type="text" v-model="txt" class="mail-filter" placeholder="Search mail">
+        <input @input="setFilter" @focus="isFocus = !isFocus" type="text" v-model="txt" :class="onFocus" class="mail-filter" placeholder="Search mail">
     </section>
     `,
     data() {
         return {
             txt: '',
+            isFocus: false,
         };
     },
     methods: {
@@ -15,5 +16,10 @@ export default {
             this.$emit('filtered', this.txt)
         }
     },
+    computed: {
+        onFocus() {
+            return this.isFocus ? 'fucus-on' : 'fucus-off'
+        },
+    }
 }
 
