@@ -654,3 +654,63 @@ select:focus {
     color: aliceblue;
     cursor: pointer;
 }
+
+
+@media (max-width: 1400px) {
+    .book-details {
+        width: 100%;
+        padding: unset;
+    }
+
+    /* .book-details img {} */
+}
+
+@media (max-width: 1200px) {
+
+    .search-container img {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .book-preview-container {
+        width: unset;
+        height: 380px;
+    }
+
+    .book-main-layout {
+        width: 520px;
+    }
+
+    /* .search-container {
+        padding: unset;
+    } */
+
+    .book-filter {
+        padding: 50px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+    }
+
+    .nav-layout {
+        display: none !important;
+    }
+
+    .search-google {
+        width: 400px;
+        text-align: center;
+    }
+
+    .book-list ul {
+        padding: 40px;
+        margin: auto;
+        width: 100px !important;
+    }
+
+    .serch-btn-input {
+        width: 420px;
+    }
+}
